@@ -1,0 +1,9 @@
+{
+  "name": "@apps/server",
+  "packageManager": "yarn@4.1.1",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@packages/types": "workspace:^"
+  }
+}
