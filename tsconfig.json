@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist"
+  },
   "exclude": [
     "packages/**/tests/**",
     "packages/**/dist/**"
