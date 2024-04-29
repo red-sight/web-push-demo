@@ -1,4 +1,9 @@
 {
   "name": "@packages/types",
-  "packageManager": "yarn@4.1.1"
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "packageManager": "yarn@4.1.1",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
 }

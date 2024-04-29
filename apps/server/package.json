@@ -3,6 +3,9 @@
   "packageManager": "yarn@4.1.1",
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
+  "scripts": {
+    "start": "node dist"
+  },
   "dependencies": {
     "@packages/types": "workspace:^"
   }
