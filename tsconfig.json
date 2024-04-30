@@ -12,7 +12,7 @@
       "path": "apps/server"
     },
     {
-      "path": "packages/types"
+      "path": "packages/config"
     }
   ],
   "files": []

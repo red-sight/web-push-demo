@@ -19,11 +19,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@apps/server@workspace:apps/server"
   dependencies:
-    "@packages/types": "workspace:^"
+    "@packages/config": "workspace:^"
     "@types/express": "npm:^4.17.21"
+    "@types/node": "npm:^20.12.7"
     express: "npm:^4.19.2"
     nodemon: "npm:^3.1.0"
     ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
 
@@ -921,10 +923,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@packages/types@workspace:^, @packages/types@workspace:packages/types":
+"@packages/config@workspace:^, @packages/config@workspace:packages/config":
   version: 0.0.0-use.local
-  resolution: "@packages/types@workspace:packages/types"
+  resolution: "@packages/config@workspace:packages/config"
   dependencies:
+    "@types/dotenv": "npm:^8.2.0"
+    dotenv: "npm:^16.4.5"
     typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
@@ -1046,6 +1050,15 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/2e1cdba2c410f25649e77856505cd60223250fa12dff7a503e492208dbfdd25f62859918f28aba95315251fd1f5e1ffbfca1e25e73037189ab85dd3f8d0a148c
+  languageName: node
+  linkType: hard
+
+"@types/dotenv@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "@types/dotenv@npm:8.2.0"
+  dependencies:
+    dotenv: "npm:*"
+  checksum: 10c0/cd010440ea750acf2359fb9ed0a1681b00ce29d9c40b602fe33e51642bd44ce30ced54b23fadc05385daa415fe9f671273911bcf95381a5aaf09690b3db96938
   languageName: node
   linkType: hard
 
@@ -2216,6 +2229,13 @@ __metadata:
   dependencies:
     path-type: "npm:^4.0.0"
   checksum: 10c0/dcac00920a4d503e38bb64001acb19df4efc14536ada475725e12f52c16777afdee4db827f55f13a908ee7efc0cb282e2e3dbaeeb98c0993dd93d1802d3bf00c
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:*, dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 10c0/48d92870076832af0418b13acd6e5a5a3e83bb00df690d9812e94b24aff62b88ade955ac99a05501305b8dc8f1b0ee7638b18493deb6fe93d680e5220936292f
   languageName: node
   linkType: hard
 
