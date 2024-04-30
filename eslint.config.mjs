@@ -1,13 +1,13 @@
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import prettierConfig from "eslint-config-prettier";
-import path from "path";
-import { fileURLToPath } from "url";
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import prettierConfig from 'eslint-config-prettier';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const ignores = ["**/dist/", "**/node_modules/**", ".yarn/"];
+const ignores = ['**/dist/', '**/node_modules/**', '.yarn/'];
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -25,7 +25,7 @@ export default tseslint.config(
   },
   {
     ignores,
-    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
     extends: [tseslint.configs.disableTypeChecked],
   }
 );
