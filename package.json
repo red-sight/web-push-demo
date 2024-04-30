@@ -17,10 +17,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.1.1",
+    "@eslint/js": "^8.56.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.7",
-    "eslint": "^9.1.1",
+    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "jest": "^29.7.0",
     "prettier": "3.2.5",
