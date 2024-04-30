@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "build": "tsc -b",
-    "postinstall": "update-ts-references",
     "start": "yarn workspaces foreach -pivA -j unlimited run start",
     "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev",
     "lint": "yarn eslint .",
@@ -26,7 +25,6 @@
     "prettier": "3.2.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.8.0",
-    "update-ts-references": "^3.3.0"
+    "typescript-eslint": "^7.8.0"
   }
 }

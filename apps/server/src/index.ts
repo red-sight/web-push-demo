@@ -1,11 +1,8 @@
-import express from 'express';
+import { config } from '@packages/config';
+import { AppServer } from './AppServer';
 
-const app = express();
+const port = config.appServer.port || 3000;
 
-app.get('/', (_req, res) => {
-  res.send(200);
-});
+const appServer = new AppServer({ port });
 
-app.listen(3000, () => {
-  console.log('Server is running');
-});
+appServer.start().catch(e => console.error(e));

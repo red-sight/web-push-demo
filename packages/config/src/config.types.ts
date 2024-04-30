@@ -1,1 +1,5 @@
-export interface IConfig {}
+export interface IConfig {
+  appServer: {
+    port?: number;
+  };
+}

@@ -3,11 +3,11 @@
   "compilerOptions": {
     "composite": true,
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
   },
-  "references": [
-    {
-      "path": "../../packages/config"
-    }
-  ]
+  // "references": [
+  //   {
+  //     "path": "../../packages/config"
+  //   }
+  // ]
 }

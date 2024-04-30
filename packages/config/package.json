@@ -1,10 +1,14 @@
 {
   "name": "@packages/config",
-  "main": "./dist/index.ts",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "packageManager": "yarn@4.1.1",
+  "scripts": {
+    "start:dev": "nodemon"
+  },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
+    "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
