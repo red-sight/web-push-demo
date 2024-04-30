@@ -1,5 +1,5 @@
 {
-  "name": "ts-monorepo-delme",
+  "name": "ts-monorepo",
   "private": true,
   "scripts": {
     "build": "tsc -b",
