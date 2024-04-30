@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
+    "rootDir": "."
   },
   "exclude": [
     "packages/**/tests/**",
@@ -8,10 +8,10 @@
   ],
   "references": [
     {
-      "path": "./packages/types"
+      "path": "apps/server"
     },
     {
-      "path": "./apps/server"
+      "path": "packages/types"
     }
   ],
   "files": []
