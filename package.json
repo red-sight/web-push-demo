@@ -5,7 +5,8 @@
     "build": "tsc -b",
     "postinstall": "update-ts-references",
     "start": "yarn workspaces foreach -pivA -j unlimited run start",
-    "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev"
+    "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev",
+    "lint": "yarn eslint ."
   },
   "packageManager": "yarn@4.1.1",
   "workspaces": [
@@ -19,5 +20,8 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0",
     "update-ts-references": "^3.3.0"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^9.1.0"
   }
 }

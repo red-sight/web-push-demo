@@ -1233,6 +1233,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-prettier@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "eslint-config-prettier@npm:9.1.0"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: 10c0/6d332694b36bc9ac6fdb18d3ca2f6ac42afa2ad61f0493e89226950a7091e38981b66bac2b47ba39d15b73fff2cd32c78b850a9cf9eed9ca9a96bfb2f3a2f10d
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^8.0.1":
   version: 8.0.1
   resolution: "eslint-scope@npm:8.0.1"
@@ -3075,6 +3086,7 @@ __metadata:
     "@eslint/js": "npm:^9.1.1"
     "@types/node": "npm:^20.12.7"
     eslint: "npm:^9.1.1"
+    eslint-config-prettier: "npm:^9.1.0"
     typescript: "npm:^5.4.5"
     typescript-eslint: "npm:^7.8.0"
     update-ts-references: "npm:^3.3.0"
