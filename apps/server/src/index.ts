@@ -1,7 +1,11 @@
-import { MyType } from "@packages/types";
+import express from "express";
 
-const me: MyType = {
-  name: "dm",
-};
+const app = express();
 
-console.log(me);
+app.get("/", (req, res) => {
+  res.send(200);
+});
+
+app.listen(3000, () => {
+  console.log("Server is running");
+});

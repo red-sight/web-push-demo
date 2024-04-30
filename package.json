@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "build": "tsc -b",
-    "postinstall": "update-ts-references"
+    "postinstall": "update-ts-references",
+    "start": "yarn workspaces foreach -pivA -j unlimited run start",
+    "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev"
   },
   "packageManager": "yarn@4.1.1",
   "workspaces": [
