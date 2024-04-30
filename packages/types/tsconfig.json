@@ -1,28 +1,7 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "incremental": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "declaration": true,
-    "declarationMap": true,
-    "strict": true,
-    "target": "ES2018",
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "allowJs": false,
-    "lib": [
-      "esnext"
-    ],
-    "esModuleInterop": true,
-    "alwaysStrict": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
     "rootDir": "./src",
     "outDir": "./dist"
   }
