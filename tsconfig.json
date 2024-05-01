@@ -16,6 +16,12 @@
     },
     {
       "path": "packages/db"
+    },
+    {
+      "path": "packages/devices"
+    },
+    {
+      "path": "packages/types"
     }
   ],
   "files": []
