@@ -2,6 +2,7 @@
   "name": "ts-monorepo",
   "private": true,
   "scripts": {
+    "postinstall": "update-ts-references",
     "build": "tsc -b",
     "start": "yarn workspaces foreach -pivA -j unlimited run start",
     "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev",
@@ -25,6 +26,7 @@
     "prettier": "3.2.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.8.0"
+    "typescript-eslint": "^7.8.0",
+    "update-ts-references": "^3.3.0"
   }
 }
