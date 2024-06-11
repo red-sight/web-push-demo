@@ -6,14 +6,13 @@
       "es2018",
     ],
     "moduleResolution": "node",
-    "rootDir": ".",
     "composite": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "paths": {
       "@lib/*": [
-        "./packages/*/src/index.ts"
+        "../../packages/*/src/index.ts"
       ]
     },
     "skipLibCheck": true,

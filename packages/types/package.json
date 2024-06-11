@@ -1,4 +1,4 @@
 {
-  "name": "types",
+  "name": "@lib/types",
   "packageManager": "yarn@4.2.2"
 }

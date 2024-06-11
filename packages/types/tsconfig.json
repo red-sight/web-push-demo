@@ -4,11 +4,6 @@
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {
-      "@lib/*": [
-        "../packages/*/src/index.ts"
-      ]
-    }
   },
   "references": []
 }
