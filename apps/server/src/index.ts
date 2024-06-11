@@ -1,6 +1,8 @@
-import { TMyType } from "@lib/types";
+import { IMyType } from "@lib/types";
 
-const newEntry: TMyType = {
+const newEntry: IMyType = {
   amount: 0,
   label: ""
 };
+
+console.log(newEntry);

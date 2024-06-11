@@ -15,6 +15,7 @@
         "../../packages/*/src/index.ts"
       ]
     },
+    "strictNullChecks": true,
     "skipLibCheck": true,
   },
 }

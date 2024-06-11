@@ -1,4 +1,4 @@
-export type TMyType = {
+export interface IMyType {
   amount: number;
   label: string;
-};
+}
