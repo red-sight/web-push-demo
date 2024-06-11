@@ -7,7 +7,12 @@
   },
   "include": [
     // whatever paths you intend to lint
-    "apps",
-    "packages",
+    "apps/*/src",
+    "packages/*/src",
+    "eslint.config.mjs"
   ],
+  "exclude": [
+    ".yarn",
+    "**/*/dist"
+  ]
 }

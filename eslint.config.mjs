@@ -2,10 +2,19 @@
 
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
+
+  {
+    ignores: [".yarn/", "apps/*/dist/", "packages/*/dist/"]
+  },
+
   {
     languageOptions: {
       parserOptions: {
@@ -14,7 +23,7 @@ export default tseslint.config(
           "./packages/*/tsconfig.json",
           "./apps/*/tsconfig.json"
         ],
-        tsconfigRootDir: import.meta.dirname
+        tsconfigRootDir: __dirname
       }
     }
   }
