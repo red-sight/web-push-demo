@@ -1,14 +1,18 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
-    "incremental": true,
-    "outDir": "./dist",
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {
+      "@lib/*": [
+        "../../packages/*/src/index.ts"
+      ]
+    }
   },
   "references": [
     {
       "path": "../../packages/types"
-    },
+    }
   ]
 }

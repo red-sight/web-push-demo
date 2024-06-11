@@ -1,37 +1,14 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "incremental": true,
-    "outDir": "./dist",
-    "baseUrl": ".",
-    "moduleResolution": "Node",
-    "module": "CommonJS",
-    "target": "ES2018",
-    "sourceMap": true,
-    "lib": [
-      "esnext"
-    ],
-    "esModuleInterop": true,
-    "alwaysStrict": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@lib/*": [
-        "packages/*/src/index.ts"
-      ]
-    }
+    "baseUrl": "."
   },
   "references": [
     {
-      "path": "packages/types"
+      "path": "apps/server"
     },
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "*.d.ts"
+    {
+      "path": "packages/types"
+    }
   ]
 }
