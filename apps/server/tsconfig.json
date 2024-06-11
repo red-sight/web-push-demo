@@ -1,32 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "./dist",
-    "baseUrl": ".",
-    "sourceMap": true,
-    "resolveJsonModule": true,
     "composite": true,
-    "allowJs": false,
     "declaration": true,
     "declarationMap": true,
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@lib/types": [
-        "../../packages/types/src/index.ts"
-      ]
-    }
+    "incremental": true,
+    "outDir": "./dist",
   },
   "references": [
     {
       "path": "../../packages/types"
-    }
-  ],
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
+    },
   ]
 }
