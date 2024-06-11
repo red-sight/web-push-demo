@@ -159,7 +159,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-parser@npm:*":
+"@types/body-parser@npm:*, @types/body-parser@npm:^1.19.5":
   version: 1.19.5
   resolution: "@types/body-parser@npm:1.19.5"
   dependencies:
@@ -552,7 +552,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:1.20.2":
+"body-parser@npm:1.20.2, body-parser@npm:^1.20.2":
   version: 1.20.2
   resolution: "body-parser@npm:1.20.2"
   dependencies:
@@ -2271,8 +2271,10 @@ __metadata:
   resolution: "server@workspace:apps/server"
   dependencies:
     "@lib/types": "workspace:^"
+    "@types/body-parser": "npm:^1.19.5"
     "@types/express": "npm:^4.17.21"
     "@types/node": "npm:^20.12.7"
+    body-parser: "npm:^1.20.2"
     express: "npm:^4.19.2"
     nodemon: "npm:^3.1.0"
     typescript: "npm:^5.4.5"

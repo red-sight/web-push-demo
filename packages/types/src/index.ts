@@ -1,4 +1,8 @@
-export interface IMyType {
-  amount: number;
-  label: string;
+export interface IUserCreateInput {
+  name: string;
+  email: string;
+}
+
+export interface IUserCreateOutput extends IUserCreateInput {
+  id: string;
 }
