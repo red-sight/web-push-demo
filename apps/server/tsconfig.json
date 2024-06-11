@@ -1,18 +1,32 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "resolveJsonModule": true,
     "composite": true,
-    "rootDir": "./src",
-    "outDir": "./dist"
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@lib/types": [
+        "../../packages/types/src/index.ts"
+      ]
+    }
   },
-  // "references": [
-  //   {
-  //     "path": "../../packages/config"
-  //   }
-  // ]
   "references": [
     {
-      "path": "../../packages/config"
+      "path": "../../packages/types"
     }
+  ],
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

@@ -1,32 +1,9 @@
 {
   "name": "ts-monorepo",
+  "packageManager": "yarn@4.3.0",
   "private": true,
-  "scripts": {
-    "postinstall": "update-ts-references",
-    "build": "tsc -b",
-    "start": "yarn workspaces foreach -pivA -j unlimited run start",
-    "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev",
-    "lint": "yarn eslint .",
-    "test": "jest --runInBand --detectOpenHandles --no-cache",
-    "test:watch": "jest --watch --detectOpenHandles --runInBand --watchAll --no-cache",
-    "test:coverage": "jest --coverage"
-  },
-  "packageManager": "yarn@4.1.1",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "devDependencies": {
-    "@eslint/js": "^8.56.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.7",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "jest": "^29.7.0",
-    "prettier": "3.2.5",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.8.0",
-    "update-ts-references": "^3.3.0"
-  }
+  ]
 }
