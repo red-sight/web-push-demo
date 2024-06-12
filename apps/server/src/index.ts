@@ -2,9 +2,11 @@ import { IUserCreateInput, IUserCreateOutput } from '@lib/types';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { randomUUID } from 'crypto';
+import * as cors from 'cors';
 const app = express();
 const port = 3000;
 
+app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
 app.post(

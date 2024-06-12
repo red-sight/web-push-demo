@@ -13,7 +13,8 @@
 <script setup lang="ts">
 import { Todo, Meta } from 'components/models';
 import ExampleComponent from 'components/ExampleComponent.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { newUser } from 'src/lib/api';
 
 const todos = ref<Todo[]>([
   {
@@ -39,5 +40,10 @@ const todos = ref<Todo[]>([
 ]);
 const meta = ref<Meta>({
   totalCount: 1200,
+});
+
+onMounted(async () => {
+  const user = await newUser({ name: 'Name', email: 'me@email.com' });
+  console.log(user);
 });
 </script>
