@@ -1,28 +1,15 @@
 {
   "extends": "./tsconfig.base.json",
+  "files": [],
   "compilerOptions": {
-    "rootDir": "."
+    "baseUrl": "."
   },
-  "exclude": [
-    "packages/**/tests/**",
-    "packages/**/dist/**"
-  ],
   "references": [
     {
       "path": "apps/server"
     },
     {
-      "path": "packages/config"
-    },
-    {
-      "path": "packages/db"
-    },
-    {
-      "path": "packages/devices"
-    },
-    {
       "path": "packages/types"
-    }
-  ],
-  "files": []
+    },
+  ]
 }

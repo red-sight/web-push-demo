@@ -1,7 +1,8 @@
-export enum EDeviceType {
-  router = 'router',
+export interface IUserCreateInput {
+  name: string;
+  email: string;
 }
 
-export enum ERouterType {
-  entware = 'entware',
+export interface IUserCreateOutput extends IUserCreateInput {
+  id: string;
 }

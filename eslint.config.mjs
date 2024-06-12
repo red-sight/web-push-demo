@@ -1,30 +1,37 @@
+// @ts-check
+
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import prettierConfig from 'eslint-config-prettier';
-import path from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import prettierConfig from 'eslint-config-prettier';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const ignores = ['**/dist/', '**/node_modules/**', '.yarn/'];
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
   eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  ...tseslint.configs.strict,
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
   prettierConfig,
+
   {
-    ignores,
+    ignores: ['.yarn/', 'apps/*/dist/', 'packages/*/dist/', 'frontend/'],
+  },
+
+  {
     languageOptions: {
       parserOptions: {
-        project: true,
+        project: [
+          './tsconfig.eslint.json',
+          './packages/*/tsconfig.json',
+          './apps/*/tsconfig.json',
+        ],
         tsconfigRootDir: __dirname,
       },
     },
   },
+
   {
-    ignores,
     files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
     extends: [tseslint.configs.disableTypeChecked],
   }

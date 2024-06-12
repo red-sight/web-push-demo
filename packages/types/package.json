@@ -1,8 +1,8 @@
 {
-  "name": "@packages/types",
+  "name": "@lib/types",
+  "packageManager": "yarn@4.2.2",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "packageManager": "yarn@4.1.1",
   "scripts": {
     "start:dev": "nodemon"
   },
