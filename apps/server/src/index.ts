@@ -2,9 +2,11 @@ import { IUserCreateInput, IUserCreateOutput } from '@lib/types';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { randomUUID } from 'crypto';
+import { config } from '@lib/config';
 import * as cors from 'cors';
+
 const app = express();
-const port = 3000;
+const port: number = config.serverPort;
 
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
@@ -15,7 +17,6 @@ app.post(
     req: express.Request<object, object, IUserCreateInput>,
     res: express.Response<IUserCreateOutput>
   ) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const inputData = req.body;
     res.send({
       ...inputData,

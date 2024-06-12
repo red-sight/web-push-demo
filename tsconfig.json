@@ -11,5 +11,8 @@
     {
       "path": "packages/types"
     },
+    {
+      "path": "packages/config"
+    },
   ]
 }
