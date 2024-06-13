@@ -9,6 +9,12 @@
       "path": "apps/server"
     },
     {
+      "path": "apps/nest-api-gateway"
+    },
+    {
+      "path": "apps/microservice"
+    },
+    {
       "path": "packages/types"
     },
     {
