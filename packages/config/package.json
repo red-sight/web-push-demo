@@ -7,14 +7,14 @@
     "build": "tsc"
   },
   "devDependencies": {
+    "@eslint/js": "^9.5.0",
     "@nestjs/microservices": "^10.3.9",
+    "@repo/eslint-config": "workspace:^",
     "@types/dotenv": "^8.2.0",
     "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.5.0",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5",
-    "@eslint/js": "^9.5.0",
-    "@repo/eslint-config": "workspace:^",
-    "eslint": "^9.5.0",
     "typescript-eslint": "^7.13.0"
   },
   "dependencies": {

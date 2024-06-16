@@ -1637,7 +1637,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/typescript-config@npm:*, @repo/typescript-config@workspace:packages/typescript-config":
+"@repo/typescript-config@npm:*, @repo/typescript-config@workspace:^, @repo/typescript-config@workspace:packages/typescript-config":
   version: 0.0.0-use.local
   resolution: "@repo/typescript-config@workspace:packages/typescript-config"
   languageName: unknown
@@ -5665,6 +5665,7 @@ __metadata:
     "@repo/config": "workspace:^"
     "@repo/eslint-config": "workspace:^"
     "@repo/prisma": "workspace:^"
+    "@repo/typescript-config": "workspace:^"
     "@types/eslint__js": "npm:^8.42.3"
     "@types/express": "npm:^4.17.17"
     "@types/jest": "npm:^29.5.2"
