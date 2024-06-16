@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@repo/*": [
-        "../*/src"
+        "../../packages/*/src"
       ]
     }
   }
