@@ -4,8 +4,6 @@
   "private": true,
   "files": [
     "library.js",
-    "next.js",
-    "react-internal.js",
     "nest.mjs",
     "base.mjs"
   ],
