@@ -5,9 +5,12 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "prisma:sync": "yarn workspace @repo/prisma prisma generate && env-cmd -f '.env' yarn workspace @repo/prisma prisma db push",
+    "prisma:studio": "env-cmd -f '.env' yarn workspace @repo/prisma prisma studio",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "prettier": "^3.2.5",
     "turbo": "^2.0.4",
     "typescript": "^5.4.5"
@@ -18,6 +21,7 @@
   "packageManager": "yarn@4.2.2",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "nest/*"
   ]
 }
