@@ -3,9 +3,11 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc -p tsconfig.build.json"
   },
   "devDependencies": {
+    "@repo/typescript-config": "workspace:^",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.12.7",
     "nodemon": "^3.1.0",
