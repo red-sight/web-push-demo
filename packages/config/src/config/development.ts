@@ -1,5 +1,3 @@
-import { IConfig } from '../config.types';
+import { IConfig } from "../config.types";
 
-export const development: Partial<IConfig> = {
-  serverPort: 3003,
-};
+export const development: Partial<IConfig> = {};

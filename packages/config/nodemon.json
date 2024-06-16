@@ -1,6 +1,6 @@
 {
-  "watch": ["src", "package.json", "tsconfig.json"],
+  "watch": ["src", "tsconfig.json"],
   "ext": ".ts,.js, .json",
   "ignore": [],
-  "exec": "tsc -b"
+  "exec": "tsc -b; echo '' >> package.json"
 }

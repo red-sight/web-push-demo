@@ -1,26 +1,27 @@
 {
   "name": "ts-monorepo",
-  "packageManager": "yarn@4.3.0",
   "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "prisma:sync": "yarn workspace @repo/prisma prisma generate && env-cmd -f '.env' yarn workspace @repo/prisma prisma db push",
+    "prisma:studio": "env-cmd -f '.env' yarn workspace @repo/prisma prisma studio",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "prettier": "^3.2.5",
+    "turbo": "^2.0.4",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "yarn@4.2.2",
   "workspaces": [
     "apps/*",
     "packages/*",
-    "frontend/*"
-  ],
-  "scripts": {
-    "build": "tsc -b",
-    "start": "yarn workspaces foreach -pivA -j unlimited run start",
-    "start:dev": "yarn workspaces foreach -pivA -j unlimited run start:dev",
-    "lint": "yarn eslint ."
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.4.0",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "^20.14.2",
-    "eslint": "^9.4.0",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.3.2",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.13.0"
-  }
+    "nest/*"
+  ]
 }

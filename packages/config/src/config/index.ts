@@ -1,2 +1,2 @@
-export { development } from './development';
-export { defaultConfig } from './default';
+export { defaultConfig } from "./default";
+export { development } from "./development";

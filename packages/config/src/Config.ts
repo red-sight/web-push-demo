@@ -7,7 +7,7 @@ export class Config {
   constructor() {
     let config: IConfig = configs.defaultConfig;
 
-    const env = process.env.NODE_ENV ?? 'development';
+    const env = process.env['NODE_ENV'] || 'development';
     if (Object.keys(configs).includes(env))
       config = {
         ...config,

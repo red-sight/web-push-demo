@@ -1,3 +1,11 @@
+import {
+  ClientProviderOptions,
+  MicroserviceOptions
+} from "@nestjs/microservices";
+
 export interface IConfig {
-  serverPort: number;
+  appName: string;
+  expressPort: number;
+  nestMicroserviceOptions: MicroserviceOptions;
+  nestMicroserviceClientOptions: ClientProviderOptions;
 }
