@@ -4,7 +4,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json",
+    "migrate:data": "ts-node ./src/data-migrations",
+    "data-migration:generate": "ts-node ./src/data-migrations/generate.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:^",

@@ -13,9 +13,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model DataMigration {
+  name        String   @id
+  performedAt DateTime @default(now()) @map("created_at")
+
+  @@map("_data_migrations")
+}
+
 model User {
   id        String   @id @default(uuid())
   name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  role      Role     @relation(fields: [roleName], references: [name])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  roleName  String   @map("role_name")
+
+  @@map("users")
+}
+
+model Role {
+  name       String       @id
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
+  User       User[]
+  Permission Permission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id        String   @id @default(uuid())
+  name      String
+  role      Role     @relation(fields: [roleName], references: [name])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  roleName  String   @map("role_name")
+
+  @@map("permissions")
 }
