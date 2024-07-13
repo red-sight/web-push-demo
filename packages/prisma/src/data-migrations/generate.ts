@@ -61,7 +61,7 @@ function sanitizeFileName(fileName: string) {
     // Sanitize the file name
     const sanitizedFileName = `${getFormattedDate()}_${sanitizeFileName(fileName)}.ts`;
     const fullPath = path.join(__dirname, "migrations", sanitizedFileName);
-    const templatePath = path.join(__dirname, "./template.ts");
+    const templatePath = path.join(__dirname, "./template");
     const templateData = await fs.readFile(templatePath, "utf8");
     await fs.writeFile(fullPath, templateData, "utf8");
     console.log(`New migration file is generated at: ${fullPath}`);

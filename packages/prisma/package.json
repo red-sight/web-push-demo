@@ -9,6 +9,7 @@
     "data-migration:generate": "ts-node ./src/data-migrations/generate.ts"
   },
   "devDependencies": {
+    "@repo/types": "workspace:^",
     "@repo/typescript-config": "workspace:^",
     "@types/dotenv": "^8.2.0",
     "@types/node": "^20.12.7",
@@ -18,6 +19,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@prisma/client": "^5.12.1"
+    "@prisma/client": "^5.12.1",
+    "@repo/config": "workspace:^"
   }
 }

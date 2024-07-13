@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Request } from 'express';
 
 @Controller()
 export class AppController {
@@ -10,8 +11,15 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/:name')
-  userAdd(@Param('name') name: string) {
-    return this.appService.userAdd(name);
+  // @Get('/:name')
+  // userAdd(@Param('name') name: string) {
+  //   return this.appService.userAdd(name);
+  // }
+
+  @Get('/profile')
+  // @Permissions(EPermission.ROOT)
+  // @UseGuards(PermissionsGuard)
+  getOwnProfile(@Req() request: Request) {
+    return request.user;
   }
 }

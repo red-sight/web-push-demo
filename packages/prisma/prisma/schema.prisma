@@ -22,8 +22,8 @@ model DataMigration {
 
 model User {
   id        String   @id @default(uuid())
-  name      String
-  role      Role     @relation(fields: [roleName], references: [name])
+  email     String   @unique()
+  Role      Role?    @relation(fields: [roleName], references: [name])
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   roleName  String   @map("role_name")
@@ -32,11 +32,11 @@ model User {
 }
 
 model Role {
-  name       String       @id
-  createdAt  DateTime     @default(now()) @map("created_at")
-  updatedAt  DateTime     @updatedAt @map("updated_at")
-  User       User[]
-  Permission Permission[]
+  name        String       @id
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  User        User[]
+  Permissions Permission[]
 
   @@map("roles")
 }
@@ -44,7 +44,7 @@ model Role {
 model Permission {
   id        String   @id @default(uuid())
   name      String
-  role      Role     @relation(fields: [roleName], references: [name])
+  Role      Role     @relation(fields: [roleName], references: [name])
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   roleName  String   @map("role_name")
