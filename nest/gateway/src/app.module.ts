@@ -1,3 +1,6 @@
+import { LocalStrategy } from './strategies/local.strategy';
+import { SigninController } from 'controllers/signin.controller';
+import { SignupController } from 'controllers/signup.controller';
 import { AuthService } from './auth.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -8,6 +11,8 @@ import { AuthController } from './auth.controller';
 import { GoogleStrategy } from './strategies/google.strategy';
 import { SessionSerializer } from './utils/session.serializer';
 import { PassportModule } from '@nestjs/passport';
+import { APP_FILTER } from '@nestjs/core';
+import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
 
 @Module({
   imports: [
@@ -25,7 +30,22 @@ import { PassportModule } from '@nestjs/passport';
       },
     ]),
   ],
-  controllers: [AppController, AuthController],
-  providers: [GoogleStrategy, SessionSerializer, AppService, AuthService],
+  controllers: [
+    SignupController,
+    SigninController,
+    AppController,
+    AuthController,
+  ],
+  providers: [
+    SessionSerializer,
+    {
+      provide: APP_FILTER,
+      useClass: RpcExceptionFilter,
+    },
+    GoogleStrategy,
+    LocalStrategy,
+    AppService,
+    AuthService,
+  ],
 })
 export class AppModule {}

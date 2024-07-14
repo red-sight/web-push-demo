@@ -6,10 +6,27 @@ import { GoogleController } from './google.controller';
 import { GoogleService } from 'google.service';
 import { AuthController } from 'auth.controller';
 import { AuthService } from 'auth.service';
+import { SignupController } from 'controllers/signup.controller';
+import { SignupService } from 'services/signup.service';
+import { SigninController } from 'controllers/signin.controller';
+import { SigninService } from 'services/signin.service';
 
 @Module({
   imports: [],
-  controllers: [AppController, GoogleController, AuthController],
-  providers: [AppService, AuthService, GoogleService, PrismaService],
+  controllers: [
+    SignupController,
+    SigninController,
+    AppController,
+    GoogleController,
+    AuthController,
+  ],
+  providers: [
+    SignupService,
+    SigninService,
+    AppService,
+    AuthService,
+    GoogleService,
+    PrismaService,
+  ],
 })
 export class AppModule {}

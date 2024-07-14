@@ -28,6 +28,7 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.0.0",
     "@repo/config": "workspace:^",
+    "@repo/dtos": "workspace:^",
     "@repo/eslint-config": "workspace:^",
     "@repo/prisma": "workspace:^",
     "@repo/types": "workspace:^",
