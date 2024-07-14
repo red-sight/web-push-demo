@@ -1,3 +1,4 @@
 export enum EPermission {
-  ROOT = "ROOT"
+  ROOT = "ROOT",
+  INVITE_USERS = "INVITE_USERS"
 }

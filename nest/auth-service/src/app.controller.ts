@@ -1,4 +1,4 @@
-import { MessagePattern } from '@nestjs/microservices';
+// import { MessagePattern } from '@nestjs/microservices';
 import { Controller } from '@nestjs/common';
 import { AppService } from './app.service';
 
@@ -6,8 +6,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @MessagePattern({ cmd: 'user-add' })
-  userAdd(email: string) {
-    return this.appService.userAdd({ email });
-  }
+  // @MessagePattern({ cmd: 'user-add' })
+  // userAdd(email: string) {
+  //   return this.appService.userAdd({ email });
+  // }
 }

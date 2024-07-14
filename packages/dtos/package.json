@@ -1,5 +1,5 @@
 {
-  "name": "@repo/config",
+  "name": "@repo/dtos",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -8,18 +8,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.5.0",
-    "@nestjs/microservices": "^10.3.9",
     "@repo/eslint-config": "workspace:^",
-    "@types/dotenv": "^8.2.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/passport-google-oauth20": "^2.0.16",
     "eslint": "^9.5.0",
     "nodemon": "^3.1.0",
-    "passport-google-oauth20": "^2.0.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.13.0"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "reflect-metadata": "^0.2.2"
   }
 }

@@ -4,10 +4,12 @@ import { AppService } from './app.service';
 import { PrismaService } from './prisma.service';
 import { GoogleController } from './google.controller';
 import { GoogleService } from 'google.service';
+import { AuthController } from 'auth.controller';
+import { AuthService } from 'auth.service';
 
 @Module({
   imports: [],
-  controllers: [AppController, GoogleController],
-  providers: [AppService, GoogleService, PrismaService],
+  controllers: [AppController, GoogleController, AuthController],
+  providers: [AppService, AuthService, GoogleService, PrismaService],
 })
 export class AppModule {}
