@@ -10,9 +10,18 @@ import { SignupController } from 'controllers/signup.controller';
 import { SignupService } from 'services/signup.service';
 import { SigninController } from 'controllers/signin.controller';
 import { SigninService } from 'services/signin.service';
+import { ClientsModule } from '@nestjs/microservices';
+import { config } from '@repo/config';
 
 @Module({
-  imports: [],
+  imports: [
+    ClientsModule.register([
+      {
+        ...config.nestMicroserviceClientOptions,
+        name: 'MAILSERVICE',
+      },
+    ]),
+  ],
   controllers: [
     SignupController,
     SigninController,

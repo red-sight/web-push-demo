@@ -1,3 +1,4 @@
+import { TransportType } from "@nestjs-modules/mailer/dist/interfaces/mailer-options.interface";
 import {
   ClientProviderOptions,
   MicroserviceOptions
@@ -14,4 +15,6 @@ export interface IConfig {
   permissions: {
     [key: string]: string;
   };
+  emailUser: string;
+  emailTransporter: TransportType;
 }

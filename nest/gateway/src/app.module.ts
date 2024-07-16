@@ -29,6 +29,12 @@ import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
         name: 'AUTHSERVICE',
       },
     ]),
+    ClientsModule.register([
+      {
+        ...config.nestMicroserviceClientOptions,
+        name: 'MAILSERVICE',
+      },
+    ]),
   ],
   controllers: [
     SignupController,

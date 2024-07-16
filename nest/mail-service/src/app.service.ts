@@ -1,0 +1,26 @@
+import { Injectable } from '@nestjs/common';
+import { MailerService } from '@nestjs-modules/mailer';
+import { config } from '@repo/config';
+
+@Injectable()
+export class AppService {
+  constructor(private readonly mailerService: MailerService) {}
+
+  public async sendEmailConfirmationEmail(email: string) {
+    console.log('In sendEmailConfirmationEmail');
+    try {
+      const res = await this.mailerService.sendMail({
+        to: email,
+        from: config.emailUser,
+        subject: 'Verify your email addess',
+        template: 'verify-email',
+        context: {
+          link: 'https://google.com',
+        },
+      });
+      return res;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}

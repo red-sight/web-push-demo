@@ -1,4 +1,5 @@
 export enum EMessagePattern {
-  SIGNUP_LOCAL = "signup.local",
-  SIGNIN_LOCAL = "signin.local"
+  SIGNUP_LOCAL = "auth.signup.local",
+  SIGNIN_LOCAL = "auth.signin.local",
+  SEND_EMAIL_CONFIRMATION = "mail.send-confirmation"
 }

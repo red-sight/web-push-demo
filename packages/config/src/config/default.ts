@@ -17,7 +17,9 @@ export const defaultConfig: IConfig = {
     transport: Transport.REDIS,
     options: {
       host: "localhost",
-      port: 6379
+      port: 6379,
+      connectTimeout: 5000,
+      commandTimeout: 5000
     }
   },
   googleOAuthCreds: {
@@ -28,5 +30,13 @@ export const defaultConfig: IConfig = {
   },
   permissions: {
     ROOT: "ROOT"
+  },
+  emailUser: process.env["GOOGLE_APP_EMAIL"] as string,
+  emailTransporter: {
+    service: "Gmail",
+    auth: {
+      user: process.env["GOOGLE_APP_EMAIL"] as string,
+      pass: process.env["GOOGLE_APP_PASSWORD"] as string
+    }
   }
 };
