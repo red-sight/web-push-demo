@@ -13,10 +13,17 @@ import { SessionSerializer } from './utils/session.serializer';
 import { PassportModule } from '@nestjs/passport';
 import { APP_FILTER } from '@nestjs/core';
 import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
+import { RedisModule } from '@nestjs-modules/ioredis';
 
 @Module({
   imports: [
     PassportModule.register({ session: true }),
+    RedisModule.forRootAsync({
+      useFactory: () => ({
+        type: 'single',
+        options: config.redisOptions,
+      }),
+    }),
     ClientsModule.register([
       {
         ...config.nestMicroserviceClientOptions,

@@ -1,7 +1,7 @@
 import { MessagePattern } from '@nestjs/microservices';
 import { Controller } from '@nestjs/common';
 import { SigninLocalDto } from '@repo/dtos';
-import { SigninService } from 'services/signin.service';
+import { SigninService } from './signin.service';
 import { EMessagePattern } from '@repo/types';
 
 @Controller()

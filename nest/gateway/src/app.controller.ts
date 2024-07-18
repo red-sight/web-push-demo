@@ -1,6 +1,9 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
+import { AuthGuard } from 'guards/auth.guard';
+// import { Permissions } from 'decorators/permission.decorator';
+// import { EPermission } from '@repo/types';
 
 @Controller()
 export class AppController {
@@ -11,14 +14,9 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  // @Get('/:name')
-  // userAdd(@Param('name') name: string) {
-  //   return this.appService.userAdd(name);
-  // }
-
   @Get('/profile')
   // @Permissions(EPermission.ROOT)
-  // @UseGuards(PermissionsGuard)
+  @UseGuards(AuthGuard)
   getOwnProfile(@Req() request: Request) {
     return request.user;
   }

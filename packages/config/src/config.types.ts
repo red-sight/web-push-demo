@@ -3,10 +3,13 @@ import {
   ClientProviderOptions,
   MicroserviceOptions
 } from "@nestjs/microservices";
+import { SessionOptions } from "express-session";
+import { RedisOptions } from "ioredis";
 import { _StrategyOptionsBase } from "passport-google-oauth20";
 
 export interface IConfig {
   appName: string;
+  appPrefixCode: string;
   expressPort: number;
   nestMicroserviceOptions: MicroserviceOptions;
   nestMicroserviceClientOptions: ClientProviderOptions;
@@ -17,4 +20,8 @@ export interface IConfig {
   };
   emailUser: string;
   emailTransporter: TransportType;
+  redisOptions: RedisOptions;
+  sessionSecret: string;
+  sessionOptions: SessionOptions;
+  sessionRefreshTokenTTL: number;
 }

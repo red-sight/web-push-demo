@@ -1,8 +1,17 @@
 import { Transport } from "@nestjs/microservices";
 import { IConfig } from "../config.types";
 
+const appPrefixCode = "ts-monorepo";
+
+const redisOptions = {
+  host: "localhost",
+  port: 6379,
+  keyPrefix: `${appPrefixCode}:`
+};
+
 export const defaultConfig: IConfig = {
-  appName: "A",
+  appName: "TS monorepo",
+  appPrefixCode,
   expressPort: 3007,
   adminEmail: process.env["ADMIN_EMAIL"] as string,
   nestMicroserviceOptions: {
@@ -38,5 +47,16 @@ export const defaultConfig: IConfig = {
       user: process.env["GOOGLE_APP_EMAIL"] as string,
       pass: process.env["GOOGLE_APP_PASSWORD"] as string
     }
-  }
+  },
+  redisOptions,
+  sessionSecret: process.env["SESSION_SECRET"] as string,
+  sessionOptions: {
+    secret: process.env["SESSION_SECRET"] as string,
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 5
+    }
+  },
+  sessionRefreshTokenTTL: 1000 * 60 * 60 * 24 * 7
 };

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { SigninLocalDto } from '@repo/dtos';
-import { PrismaService } from 'prisma.service';
-import { Password } from 'utils/Password';
+import { PrismaService } from '../../prisma.service';
+import { Password } from '../../utils/Password';
 
 @Injectable()
 export class SigninService {

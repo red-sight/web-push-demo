@@ -3,6 +3,8 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { AuthService } from '../auth.service';
 import { VerifyCallback } from 'passport-google-oauth20';
+import { IUserSessionData } from 'types/user-session-data.interface';
+import { ERole } from '@repo/types';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
@@ -18,7 +20,14 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     password: string,
     done: VerifyCallback,
   ): Promise<any> {
-    const user = await this.authService.validateUserLocal({ email, password });
-    done(null, user);
+    const user: {
+      id: string;
+      Role: { name: ERole };
+    } = await this.authService.validateUserLocal({ email, password });
+    const userSessionData: IUserSessionData = {
+      id: user.id,
+      role: user.Role.name,
+    };
+    done(null, userSessionData);
   }
 }
