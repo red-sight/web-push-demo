@@ -7,7 +7,6 @@ export class AppService {
   constructor(private readonly mailerService: MailerService) {}
 
   public async sendEmailConfirmationEmail(email: string) {
-    console.log('In sendEmailConfirmationEmail');
     try {
       const res = await this.mailerService.sendMail({
         to: email,

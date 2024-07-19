@@ -11,12 +11,11 @@ import {
   // Response
 } from 'express';
 import { PassportLocalGuard } from 'guards/passport-local.guard';
-import { AuthService } from 'auth.service';
 // import { config } from '@repo/config';
 
 @Controller('/signin')
 export class SigninController {
-  constructor(private readonly authService: AuthService) {}
+  constructor() {}
 
   @Post('/local')
   @UseGuards(PassportLocalGuard)

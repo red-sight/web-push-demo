@@ -1,20 +1,16 @@
 import { LocalStrategy } from './strategies/local.strategy';
-import { SigninController } from 'controllers/signin.controller';
-import { SignupController } from 'controllers/signup.controller';
-import { AuthService } from './auth.service';
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Global, Module } from '@nestjs/common';
 import { ClientsModule } from '@nestjs/microservices';
 import { config } from '@repo/config';
-import { AuthController } from './auth.controller';
-import { GoogleStrategy } from './strategies/google.strategy';
 import { SessionSerializer } from './utils/session.serializer';
 import { PassportModule } from '@nestjs/passport';
 import { APP_FILTER } from '@nestjs/core';
 import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
 import { RedisModule } from '@nestjs-modules/ioredis';
+import { SigninModule } from './modules/signin/signin.module';
+import { SignupModule } from './modules/signup/signup.module';
 
+@Global()
 @Module({
   imports: [
     PassportModule.register({ session: true }),
@@ -42,12 +38,8 @@ import { RedisModule } from '@nestjs-modules/ioredis';
         name: 'MAILSERVICE',
       },
     ]),
-  ],
-  controllers: [
-    SignupController,
-    SigninController,
-    AppController,
-    AuthController,
+    SigninModule,
+    SignupModule,
   ],
   providers: [
     SessionSerializer,
@@ -55,10 +47,8 @@ import { RedisModule } from '@nestjs-modules/ioredis';
       provide: APP_FILTER,
       useClass: RpcExceptionFilter,
     },
-    GoogleStrategy,
     LocalStrategy,
-    AppService,
-    AuthService,
   ],
+  exports: [RedisModule, ClientsModule, LocalStrategy],
 })
 export class AppModule {}

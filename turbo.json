@@ -11,6 +11,18 @@
     },
     "dev": {
       "cache": false
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env",
+        ".env.*",
+        "./packages/config",
+        "**/*.test.ts",
+        "**/*.spec.ts"
+      ],
+      "outputs": []
     }
   }
 }

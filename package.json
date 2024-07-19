@@ -9,12 +9,13 @@
     "prisma:studio": "env-cmd -f '.env' yarn workspace @repo/prisma prisma studio",
     "migrate:data": "env-cmd -f '.env' yarn workspace @repo/prisma migrate:data",
     "data-migration:generate": "yarn workspace @repo/prisma data-migration:generate",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "NODE_ENV=test; turbo test"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
     "prettier": "^3.2.5",
-    "turbo": "^2.0.6",
+    "turbo": "^2.0.7",
     "typescript": "^5.4.5"
   },
   "engines": {
