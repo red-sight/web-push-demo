@@ -1,12 +1,10 @@
-import { ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
+import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { Response } from 'express';
 
 @Catch(RpcException)
 export class RpcExceptionFilter implements ExceptionFilter {
   catch(exception: RpcException, host: ArgumentsHost) {
-    console.log('In RpcExceptionFilter');
-
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
 
@@ -18,10 +16,16 @@ export class RpcExceptionFilter implements ExceptionFilter {
       statusCode = errorResponse.statusCode as number;
     }
 
-    const message =
+    let message =
       typeof errorResponse === 'object' && 'message' in errorResponse
         ? errorResponse.message
         : errorResponse;
+
+    try {
+      if (typeof message === 'string') message = JSON.parse(message);
+    } catch (e) {
+      console.error('Failed to parse RPC error message', e);
+    }
 
     response.status(statusCode).json({
       statusCode,

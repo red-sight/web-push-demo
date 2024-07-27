@@ -24,4 +24,7 @@ export interface IConfig {
   sessionSecret: string;
   sessionOptions: SessionOptions;
   sessionRefreshTokenTTL: number;
+  otpSessionTTL: number;
+  otpResendBlockTTL: number;
+  serviceMethodTimeout: number;
 }

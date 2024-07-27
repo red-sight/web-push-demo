@@ -2,8 +2,12 @@ import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { VerifyCallback } from 'passport-google-oauth20';
-import { IUserSessionData } from 'types/user-session-data.interface';
-import { ERole } from '@repo/types';
+import {
+  EOtpChannelName,
+  ERole,
+  IAvailableOtpChannel,
+  IUserSessionData,
+} from '@repo/types';
 import { SigninService } from '../modules/signin/signin.service';
 
 @Injectable()
@@ -24,9 +28,18 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       id: string;
       Role: { name: ERole };
     } = await this.signinService.validateUserLocal({ email, password });
+    const availableOtpChannels: IAvailableOtpChannel[] = [];
+
+    if (email)
+      availableOtpChannels.push({
+        channelName: EOtpChannelName.EMAIL,
+        to: email,
+      });
+
     const userSessionData: IUserSessionData = {
       id: user.id,
       role: user.Role.name,
+      availableOtpChannels,
     };
     done(null, userSessionData);
   }

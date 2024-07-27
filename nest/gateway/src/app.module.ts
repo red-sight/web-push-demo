@@ -4,11 +4,15 @@ import { ClientsModule } from '@nestjs/microservices';
 import { config } from '@repo/config';
 import { SessionSerializer } from './utils/session.serializer';
 import { PassportModule } from '@nestjs/passport';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { SigninModule } from './modules/signin/signin.module';
 import { SignupModule } from './modules/signup/signup.module';
+import { ProfileModule } from './modules/profile/profile.module';
+import { OtpModule } from './modules/otp/otp.module';
+import { GateService } from 'gate.service';
+import { ServiceMethodInterceptor } from 'interceptors/service-method.interceptor';
 
 @Global()
 @Module({
@@ -40,6 +44,8 @@ import { SignupModule } from './modules/signup/signup.module';
     ]),
     SigninModule,
     SignupModule,
+    ProfileModule,
+    OtpModule,
   ],
   providers: [
     SessionSerializer,
@@ -47,8 +53,13 @@ import { SignupModule } from './modules/signup/signup.module';
       provide: APP_FILTER,
       useClass: RpcExceptionFilter,
     },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ServiceMethodInterceptor,
+    },
     LocalStrategy,
+    GateService,
   ],
-  exports: [RedisModule, ClientsModule, LocalStrategy],
+  exports: [RedisModule, ClientsModule, LocalStrategy, OtpModule],
 })
 export class AppModule {}

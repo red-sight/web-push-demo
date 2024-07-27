@@ -27,6 +27,10 @@ async function bootstrap() {
   app.use(passport.session());
   app.useGlobalFilters(new RpcExceptionFilter());
 
+  // Service method middleware setup
+  // const reflector = app.get(Reflector);
+  // app.useGlobalInterceptors(new ServiceMethodInterceptor(reflector, gateS));
+
   await app.listen(3033);
 }
 bootstrap();

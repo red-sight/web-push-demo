@@ -1,0 +1,9 @@
+extends default.pug 
+
+block content
+  p #{message} 
+  h1 
+    pre #{code} 
+  if link
+    p Or you may follow the link: 
+    a(href=link, target="_blank" class="button") Confirm

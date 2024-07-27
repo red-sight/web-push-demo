@@ -10,6 +10,7 @@ async function bootstrap() {
     config.nestMicroserviceOptions,
   );
   app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalFilters(new AllExceptionsToRpcFilter());
   await app.listen();
 }
 bootstrap();
