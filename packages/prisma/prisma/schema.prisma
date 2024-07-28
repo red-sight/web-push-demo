@@ -20,25 +20,12 @@ model DataMigration {
   @@map("_data_migrations")
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique()
-  password  String?
-  salt      String?
-  Role      Role?    @relation(fields: [roleName], references: [name])
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  roleName  String   @map("role_name")
-
-  @@map("users")
-}
-
 model Role {
   name        String       @id
   createdAt   DateTime     @default(now()) @map("created_at")
   updatedAt   DateTime     @updatedAt @map("updated_at")
-  User        User[]
-  Permissions Permission[]
+  permissions Permission[]
+  profile     Profile[]
 
   @@map("roles")
 }
@@ -52,4 +39,50 @@ model Permission {
   roleName  String   @map("role_name")
 
   @@map("permissions")
+}
+
+// model User {
+//   id               String   @id @default(uuid())
+//   email            String   @unique()
+//   password         String?
+//   salt             String?
+//   Role             Role?    @relation(fields: [roleName], references: [name])
+//   createdAt        DateTime @default(now()) @map("created_at")
+//   updatedAt        DateTime @updatedAt @map("updated_at")
+//   roleName         String   @map("role_name")
+//   isEmailConfirmed Boolean  @default(false) @map("is_email_confirmed")
+
+//   @@map("users")
+// }
+
+model Profile {
+  id          String       @id @default(uuid())
+  roleName    String       @map("role_name")
+  role        Role         @relation(fields: [roleName], references: [name])
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  authMethods AuthMethod[]
+
+  @@map("profiles")
+}
+
+model AuthMethod {
+  id          String     @id @default(uuid())
+  profileId   String     @map("profile_id")
+  isConfirmed Boolean    @default(false) @map("is_confirmed")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  profile     Profile    @relation(fields: [profileId], references: [id])
+  localAuth   LocalAuth?
+}
+
+model LocalAuth {
+  id           String     @id @default(uuid())
+  email        String     @unique()
+  password     String?
+  salt         String?
+  authMethodId String     @unique @map("auth_method_id")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  authMethod   AuthMethod @relation(fields: [authMethodId], references: [id])
 }

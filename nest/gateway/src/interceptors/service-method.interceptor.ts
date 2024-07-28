@@ -26,8 +26,7 @@ export class ServiceMethodInterceptor implements NestInterceptor {
 
     return from(
       this.gateService.serviceMethodRequest(options.cmd, {
-        body: request.body,
-        request: this.serializeRequest(request),
+        ...this.serializeRequest(request),
         user: request.user,
       }),
     ).pipe(switchMap((res) => next.handle().pipe(map(() => res))));

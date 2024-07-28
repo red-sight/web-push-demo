@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { SigninLocalDto } from '@repo/dtos';
 import { PrismaService } from '../../prisma.service';
@@ -9,35 +9,22 @@ export class SigninService {
   constructor(private prisma: PrismaService) {}
 
   async signinLocal({ email, password }: SigninLocalDto) {
-    const existingUser = await this.prisma.user.findUnique({
+    const localAuth = await this.prisma.localAuth.findUnique({
       where: { email },
       include: {
-        Role: {
-          include: {
-            Permissions: true,
-          },
-        },
+        authMethod: { include: { profile: { include: { role: true } } } },
       },
     });
-
-    if (!existingUser) {
-      throw new RpcException({ statusCode: 404, message: 'User not found' });
+    if (!localAuth || !localAuth.authMethod || !localAuth.authMethod.profile) {
+      throw new NotFoundException('Access not found');
     }
-    if (!existingUser.salt)
-      throw new RpcException({
-        statusCode: 500,
-        message: 'Signin with password is not allowed for the user',
-      });
-
     const passwordInstance = new Password({
       password,
-      salt: existingUser.salt,
+      salt: localAuth.salt,
     });
 
-    const passwordMatched = passwordInstance.verify(existingUser.password);
+    const passwordMatched = passwordInstance.verify(localAuth.password);
     if (!passwordMatched)
       throw new RpcException({ statusCode: 403, message: 'Unauthorized' });
-
-    return existingUser;
   }
 }

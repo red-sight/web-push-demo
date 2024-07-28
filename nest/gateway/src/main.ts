@@ -4,7 +4,6 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 import * as cookieParser from 'cookie-parser';
 import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
-import { ValidationPipe } from '@nestjs/common';
 import RedisStore from 'connect-redis';
 import { config } from '@repo/config';
 import { Redis } from 'ioredis';
@@ -22,7 +21,7 @@ async function bootstrap() {
 
   app.use(cookieParser());
   app.use(session(sessionConfig));
-  app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalPipes(new ValidationPipe());
   app.use(passport.initialize());
   app.use(passport.session());
   app.useGlobalFilters(new RpcExceptionFilter());

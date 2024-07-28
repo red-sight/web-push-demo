@@ -61,5 +61,6 @@ export const defaultConfig: IConfig = {
   sessionRefreshTokenTTL: 1000 * 60 * 60 * 24 * 7,
   otpSessionTTL: 1000 * 60 * 5,
   otpResendBlockTTL: 1000 * 60,
-  serviceMethodTimeout: 5000
+  serviceMethodTimeout: 5000,
+  otpLength: 6
 };

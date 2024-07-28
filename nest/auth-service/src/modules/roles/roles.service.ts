@@ -12,11 +12,11 @@ export class RolesService {
 
   async loadRolesPermissionsToStore() {
     const roles = await this.prisma.role.findMany({
-      select: { name: true, Permissions: { select: { name: true } } },
+      select: { name: true, permissions: { select: { name: true } } },
     });
-    const mappedRoles = roles.map(({ name, Permissions }) => ({
+    const mappedRoles = roles.map(({ name, permissions }) => ({
       name,
-      permissions: Permissions.map(({ name }) => name),
+      permissions: permissions.map(({ name }) => name),
     }));
     await this.store.set('roles', JSON.stringify(mappedRoles));
     return mappedRoles;

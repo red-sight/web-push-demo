@@ -8,11 +8,9 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { RpcExceptionFilter } from 'filters/RcpExceptionFilter';
 import { RedisModule } from '@nestjs-modules/ioredis';
 import { SigninModule } from './modules/signin/signin.module';
-import { SignupModule } from './modules/signup/signup.module';
-import { ProfileModule } from './modules/profile/profile.module';
-import { OtpModule } from './modules/otp/otp.module';
 import { GateService } from 'gate.service';
 import { ServiceMethodInterceptor } from 'interceptors/service-method.interceptor';
+import { AuthController } from 'controllers/auth.controller';
 
 @Global()
 @Module({
@@ -36,16 +34,7 @@ import { ServiceMethodInterceptor } from 'interceptors/service-method.intercepto
         name: 'AUTHSERVICE',
       },
     ]),
-    ClientsModule.register([
-      {
-        ...config.nestMicroserviceClientOptions,
-        name: 'MAILSERVICE',
-      },
-    ]),
     SigninModule,
-    SignupModule,
-    ProfileModule,
-    OtpModule,
   ],
   providers: [
     SessionSerializer,
@@ -60,6 +49,7 @@ import { ServiceMethodInterceptor } from 'interceptors/service-method.intercepto
     LocalStrategy,
     GateService,
   ],
-  exports: [RedisModule, ClientsModule, LocalStrategy, OtpModule],
+  controllers: [AuthController],
+  exports: [RedisModule, ClientsModule, LocalStrategy],
 })
 export class AppModule {}

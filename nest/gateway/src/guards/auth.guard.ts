@@ -7,24 +7,16 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import {
-  EOtpChannelName,
-  EPermission,
-  IOtpOptions,
-  IUserSessionData,
-} from '@repo/types';
-import { OTP_KEY } from 'decorators/otp.decorator';
+import { EPermission, IUserSessionData } from '@repo/types';
 import { PERMISSIONS_KEY } from 'decorators/permission.decorator';
 import { Request } from 'express';
 import Redis from 'ioredis';
-import { OtpService } from 'modules/otp/otp.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
     private reflector: Reflector,
     @InjectRedis() private readonly store: Redis,
-    private readonly otpService: OtpService,
   ) {}
 
   async canActivate(context: ExecutionContext) {
@@ -56,25 +48,6 @@ export class AuthGuard implements CanActivate {
         throw new ForbiddenException();
     }
 
-    // OTP
-    const otpDecoratorOptions = this.reflector.getAllAndOverride<
-      Partial<IOtpOptions>
-    >(OTP_KEY, [context.getHandler(), context.getClass()]);
-    if (otpDecoratorOptions) {
-      const otpOptions: IOtpOptions = {
-        request: {
-          headers: request.headers,
-          query: request.query,
-          body: request.body,
-        },
-        channelName: EOtpChannelName.EMAIL,
-        availableChannels: user.availableOtpChannels,
-        ...otpDecoratorOptions,
-      };
-
-      const otpRes = await this.otpService.send(otpOptions);
-      throw new UnauthorizedException(otpRes);
-    }
     return true;
   }
 }

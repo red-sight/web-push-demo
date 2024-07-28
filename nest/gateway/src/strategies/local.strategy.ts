@@ -2,17 +2,12 @@ import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { VerifyCallback } from 'passport-google-oauth20';
-import {
-  EOtpChannelName,
-  ERole,
-  IAvailableOtpChannel,
-  IUserSessionData,
-} from '@repo/types';
-import { SigninService } from '../modules/signin/signin.service';
+import { EMessagePattern, ERole, IUserSessionData } from '@repo/types';
+import { GateService } from 'gate.service';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor(private signinService: SigninService) {
+  constructor(private gateService: GateService) {
     super({
       usernameField: 'email', // If 'usernameField' is not specified, it defaults to 'username'
       passwordField: 'password',
@@ -26,20 +21,15 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   ): Promise<any> {
     const user: {
       id: string;
-      Role: { name: ERole };
-    } = await this.signinService.validateUserLocal({ email, password });
-    const availableOtpChannels: IAvailableOtpChannel[] = [];
-
-    if (email)
-      availableOtpChannels.push({
-        channelName: EOtpChannelName.EMAIL,
-        to: email,
-      });
+      role: { name: ERole };
+    } = await this.gateService.serviceMethodRequest(
+      EMessagePattern.SIGNIN_LOCAL,
+      { body: { email, password } },
+    );
 
     const userSessionData: IUserSessionData = {
       id: user.id,
-      role: user.Role.name,
-      availableOtpChannels,
+      role: user.role.name,
     };
     done(null, userSessionData);
   }

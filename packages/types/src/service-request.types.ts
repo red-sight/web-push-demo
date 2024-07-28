@@ -8,6 +8,6 @@ export type IServiceRequest = Pick<
 
 export interface IServiceMethodData {
   body: any;
-  request: IServiceRequest;
+  request?: IServiceRequest;
   user?: IUserSessionData;
 }

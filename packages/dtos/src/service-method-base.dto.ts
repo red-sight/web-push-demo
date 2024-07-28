@@ -1,15 +1,21 @@
-import { IServiceRequest, IUserSessionData } from "@repo/types";
-import { IsNotEmpty, IsObject, IsOptional } from "class-validator";
+import { FlatObject, IUserSessionData } from "@repo/types";
+
+export class SerializedHttpRequestDto {
+  headers: FlatObject;
+  method: string;
+  url: string;
+  query: FlatObject;
+  params: FlatObject;
+  body: any;
+}
 
 export class ServiceMethodBaseDto {
-  @IsNotEmpty()
-  @IsObject()
-  request: IServiceRequest;
-
-  @IsObject()
-  @IsOptional()
+  request: SerializedHttpRequestDto;
   user: IUserSessionData;
-
-  @IsOptional()
   body: any;
+  headers: FlatObject;
+  method: string;
+  url: string;
+  query: FlatObject;
+  params: FlatObject;
 }

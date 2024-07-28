@@ -2,7 +2,13 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { config } from '@repo/config';
 import { IServiceMethodData } from '@repo/types';
-import { catchError, firstValueFrom, throwError, timeout } from 'rxjs';
+import {
+  catchError,
+  defaultIfEmpty,
+  firstValueFrom,
+  throwError,
+  timeout,
+} from 'rxjs';
 
 @Injectable()
 export class GateService {
@@ -12,6 +18,7 @@ export class GateService {
     return await firstValueFrom(
       this.client.send({ cmd }, data).pipe(
         timeout(config.serviceMethodTimeout),
+        defaultIfEmpty(''),
         catchError((err) => {
           if (!(err instanceof RpcException)) {
             err = new RpcException({

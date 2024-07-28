@@ -27,4 +27,5 @@ export interface IConfig {
   otpSessionTTL: number;
   otpResendBlockTTL: number;
   serviceMethodTimeout: number;
+  otpLength: number;
 }

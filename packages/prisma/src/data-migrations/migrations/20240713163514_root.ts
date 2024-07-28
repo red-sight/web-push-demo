@@ -15,12 +15,6 @@ async function main() {
         roleName: roleName
       }
     });
-    await tx.user.create({
-      data: {
-        email: "dm112@tadbox.com",
-        roleName: roleName
-      }
-    });
   });
 }
 
