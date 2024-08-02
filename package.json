@@ -5,10 +5,6 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "prisma:sync": "yarn workspace @repo/prisma prisma generate && env-cmd -f '.env' yarn workspace @repo/prisma prisma db push",
-    "prisma:studio": "env-cmd -f '.env' yarn workspace @repo/prisma prisma studio",
-    "migrate:data": "env-cmd -f '.env' yarn workspace @repo/prisma migrate:data",
-    "data-migration:generate": "yarn workspace @repo/prisma data-migration:generate",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "NODE_ENV=test; turbo test"
   },
@@ -24,7 +20,6 @@
   "packageManager": "yarn@4.2.2",
   "workspaces": [
     "apps/*",
-    "packages/*",
-    "nest/*"
+    "packages/*"
   ]
 }
