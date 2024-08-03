@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { PushSubscriptionDto } from './dtos/subscription.dto';
 import { SendPushNotificationDto } from './dtos/send-push-notification.dto';
 
 @Controller()
@@ -18,11 +17,11 @@ export class AppController {
     return this.appService.generateVapidKeys();
   }
 
-  @Post('/subscribe')
-  async subscribe(@Body() subscription: PushSubscriptionDto) {
-    const key = await this.appService.subscribe(subscription);
-    return { key };
-  }
+  // @Post('/subscribe')
+  // async subscribe(@Body() subscription: PushSubscriptionDto) {
+  //   const key = await this.appService.subscribe(subscription);
+  //   return { key };
+  // }
 
   @Post('/send')
   async send(@Body() data: SendPushNotificationDto) {

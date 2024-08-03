@@ -14,6 +14,7 @@ import {
   Length,
   ValidateNested,
 } from 'class-validator';
+import { PushSubscriptionDto } from './subscription.dto';
 
 class PushNotificationActionDto {
   @IsString()
@@ -85,13 +86,15 @@ class PushNotificationDto {
 }
 
 export class SendPushNotificationDto {
-  @IsNotEmpty()
-  @IsUUID()
-  key: string;
-
   @IsObject()
   @IsNotEmpty()
   @ValidateNested()
   @Type(() => PushNotificationDto)
   notification: PushNotificationDto;
+
+  @IsObject()
+  @IsNotEmpty()
+  @ValidateNested()
+  @Type(() => PushSubscriptionDto)
+  subscription: PushSubscriptionDto;
 }
