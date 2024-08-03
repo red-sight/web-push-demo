@@ -17,12 +17,6 @@ export class AppController {
     return this.appService.generateVapidKeys();
   }
 
-  // @Post('/subscribe')
-  // async subscribe(@Body() subscription: PushSubscriptionDto) {
-  //   const key = await this.appService.subscribe(subscription);
-  //   return { key };
-  // }
-
   @Post('/send')
   async send(@Body() data: SendPushNotificationDto) {
     await this.appService.sendPushNotification(data);
