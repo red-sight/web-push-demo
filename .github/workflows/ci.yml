@@ -49,4 +49,12 @@ jobs:
             docker stop web-push-demo || true
             docker rm web-push-demo || true
             docker run -d --name web-push-demo ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest
+            docker run -d \
+              --name web-push-demo \
+              -p 3000:3000 \
+              -p 8888:8888 \
+              -e VAPID_PUBLIC_KEY=${{secrets.VAPID_PUBLIC_KEY}} \
+              -e VAPID_PRIVATE_KEY=${{secrets.VAPID_PRIVATE_KEY}} \
+              ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest \
+              yarn start
           EOF
