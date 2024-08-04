@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  # Optionally, trigger this workflow on tag creation
-  # tags:
-  #   - 'v*.*.*'
 
 jobs:
   build:
@@ -41,9 +38,15 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Test SSH connection
+        run: |
+          ssh -o StrictHostKeyChecking=no -v ${{ secrets.VPS_ACCESS }} exit
+
       - name: SSH into VPS and run Docker container
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_ACCESS }} << 'EOF'
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-image:latest
-            docker run -d --name my-container ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest
+            docker stop web-push-demo || true
+            docker rm web-push-demo || true
+            docker run -d --name web-push-demo ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest
           EOF
