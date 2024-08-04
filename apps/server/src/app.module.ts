@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { WebPushModule } from './web-push/web-push.module';
 import { ConfigModule } from '@nestjs/config';
+import { WebPushService } from './web-push/web-push.service';
 
 @Module({
   imports: [
@@ -13,6 +13,6 @@ import { ConfigModule } from '@nestjs/config';
     WebPushModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [WebPushService],
 })
 export class AppModule {}

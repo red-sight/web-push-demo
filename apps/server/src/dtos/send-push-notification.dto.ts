@@ -34,55 +34,55 @@ class PushNotificationDto {
 
   @IsOptional()
   @IsString()
-  body: string;
+  body?: string;
 
   @IsOptional()
   @IsUrl()
-  icon: string;
+  icon?: string;
 
   @IsOptional()
   @IsUrl()
-  badge: string;
+  badge?: string;
 
   @IsOptional()
   @IsUrl()
-  image: string;
+  image?: string;
 
   @IsOptional()
   @IsArray()
   @ArrayNotEmpty()
   @IsNumber({}, { each: true })
-  vibrate: number[];
+  vibrate?: number[];
 
   @IsOptional()
-  data: any;
+  data?: any;
 
   @IsOptional()
   @IsEnum(['auto', 'ltr', 'rtl'])
-  dir: string;
+  dir?: string;
 
   @IsOptional()
   @IsString()
   @Length(2)
-  lang: string;
+  lang?: string;
 
   @IsOptional()
   @IsBoolean()
-  renotify: boolean;
+  renotify?: boolean;
 
   @IsOptional()
   @IsBoolean()
-  requireInteraction: boolean;
+  requireInteraction?: boolean;
 
   @IsOptional()
   @IsString()
-  tag: string;
+  tag?: string;
 
   @IsOptional()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => PushNotificationActionDto)
-  actions: PushNotificationActionDto[];
+  actions?: PushNotificationActionDto[];
 }
 
 export class SendPushNotificationDto {
