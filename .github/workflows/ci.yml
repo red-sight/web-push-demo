@@ -45,9 +45,9 @@ jobs:
       - name: SSH into VPS and run Docker container
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_ACCESS }} << 'EOF'
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/my-image:latest
-            docker stop web-push-demo || true
-            docker rm web-push-demo || true
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest
+            docker stop ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo || true
+            docker rm ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo || true
             docker run -d --name web-push-demo ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest
             docker run -d \
               --name web-push-demo \
