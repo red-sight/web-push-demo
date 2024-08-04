@@ -12,6 +12,10 @@
     "dev": {
       "cache": false
     },
+    "start": {
+      "env": ["NODE_ENV", "VAPID_PUBLIC_KEY", "VAPID_PRIVATE_KEY"],
+      "cache": false
+    },
     "test": {
       "dependsOn": ["^test"],
       "inputs": [

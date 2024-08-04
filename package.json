@@ -6,7 +6,10 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "NODE_ENV=test; turbo test"
+    "test": "NODE_ENV=test; turbo test",
+    "start": "NODE_ENV=production; turbo start",
+    "docker:build": "docker build -t 'web-push-demo:latest' .",
+    "docker:start": "docker run --name web-push-demo -d -p 3000:3000 -p 8888:8888 web-push-demo:latest yarn start"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

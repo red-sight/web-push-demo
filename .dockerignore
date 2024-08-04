@@ -1,0 +1,10 @@
+.vscode
+**/.vscode
+node_modules
+**/node_modules
+**/.env
+**/.env.*
+Dockerfile
+.git
+**/dist/
+**/dev-dist/

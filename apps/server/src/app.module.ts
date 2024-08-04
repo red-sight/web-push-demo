@@ -5,7 +5,13 @@ import { WebPushModule } from './web-push/web-push.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), WebPushModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      ignoreEnvFile: process.env.NODE_ENV === 'production',
+    }),
+    WebPushModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
