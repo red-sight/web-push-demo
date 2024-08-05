@@ -21,6 +21,9 @@
       "ESNext",
       "DOM",
       "WebWorker"
+    ],
+    "types": [
+      "node"
     ]
   }
 }
