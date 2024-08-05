@@ -10,7 +10,10 @@
       "dependsOn": ["^lint"]
     },
     "dev": {
-      "cache": false
+      "dependsOn": ["^dev"],
+      "cache": false,
+      "outputs": [],
+      "persistent": true
     },
     "start": {
       "env": ["NODE_ENV", "VAPID_PUBLIC_KEY", "VAPID_PRIVATE_KEY"],
