@@ -22,5 +22,7 @@
   "start_url": "/",
   "scope": "https://web-push-demo.distantcell.space",
   "description": "A quick implementation of web push notifications can effectively showcase their ability to deliver real-time updates and enhance user engagement.",
-  "id": "https://web-push-demo.distantcell.space"
+  "id": "https://web-push-demo.distantcell.space",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF"
 }
