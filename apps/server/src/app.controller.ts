@@ -8,8 +8,7 @@ export class AppController {
 
   @Get('/get_public_vapid_key')
   getPublicKey() {
-    const publicKey = this.webPushService.getPublicVapidKey();
-    return { publicKey };
+    return { publicKey: this.webPushService.getPublicVapidKey() };
   }
 
   @Get('/generate_vapid_keys')

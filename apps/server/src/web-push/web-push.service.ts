@@ -25,6 +25,8 @@ VAPID_PRIVATE_KEY='${keys.privateKey}'
       `);
     }
 
+    this.publicKey = publicKey;
+
     webPush.setVapidDetails(
       'mailto:malahov.dmitry@gmail.com',
       publicKey,

@@ -1,0 +1,102 @@
+/* Primary and Surface Palettes */
+
+/* 
+primary #126DFF
+secondary #00A9FF
+*/
+
+:root {
+  /* --p-primary-50: var(--p-surface-50);
+  --p-primary-100: var(--p-surface-100);
+  --p-primary-200: var(--p-surface-200);
+  --p-primary-300: var(--p-surface-300);
+  --p-primary-400: var(--p-surface-400);
+  --p-primary-500: var(--p-surface-500);
+  --p-primary-600: var(--p-surface-600);
+  --p-primary-700: var(--p-surface-700);
+  --p-primary-800: var(--p-surface-800);
+  --p-primary-900: var(--p-surface-900);
+  --p-primary-950: var(--p-surface-950); */
+  --p-primary-50: #E3F0FF;
+  --p-primary-100: #C8E1FF;
+  --p-primary-200: #91C2FF;
+  --p-primary-300: #5AA2FF;
+  --p-primary-400: #2B88FF;
+  --p-primary-500: #126DFF;
+  --p-primary-600: #0F57CC;
+  --p-primary-700: #0B4299;
+  --p-primary-800: #072D66;
+  --p-primary-900: #031833;
+  --p-primary-950: #020D1A;
+
+  --p-secondary-50: #E0F7FF;
+  --p-secondary-100: #B3EFFF;
+  --p-secondary-200: #66DFFF;
+  --p-secondary-300: #1BCFFF;
+  --p-secondary-400: #00BFFF;
+  --p-secondary-500: #00A9FF;
+  --p-secondary-600: #0087CC;
+  --p-secondary-700: #006599;
+  --p-secondary-800: #004466;
+  --p-secondary-900: #002233;
+  --p-secondary-950: #001119;
+
+  --p-surface-0: #ffffff;
+  --p-surface-50: #f8fafc;
+  --p-surface-100: #f1f5f9;
+  --p-surface-200: #e2e8f0;
+  --p-surface-300: #cbd5e1;
+  --p-surface-400: #94a3b8;
+  --p-surface-500: #64748b;
+  --p-surface-600: #475569;
+  --p-surface-700: #334155;
+  --p-surface-800: #1e293b;
+  --p-surface-900: #0f172a;
+  --p-surface-950: #020617;
+  --p-content-border-radius: 6px;
+}
+
+/* Light Mode */
+:root {
+  --p-primary-color: var(--p-primary-500);
+  --p-primary-contrast-color: var(--p-surface-0);
+  --p-primary-hover-color: var(--p-primary-600);
+  --p-primary-active-color: var(--p-primary-700);
+  --p-content-border-color: var(--p-surface-200);
+  --p-content-hover-background: var(--p-surface-100);
+  --p-content-hover-color: var(--p-surface-800);
+  --p-highlight-background: var(--p-primary-50);
+  --p-highlight-color: var(--p-primary-700);
+  --p-highlight-focus-background: var(--p-primary-100);
+  --p-highlight-focus-color: var(--p-primary-800);
+  --p-text-color: var(--p-surface-700);
+  --p-text-hover-color: var(--p-surface-800);
+  --p-text-muted-color: var(--p-surface-500);
+  --p-text-hover-muted-color: var(--p-surface-600);
+}
+
+/* 
+ * Dark Mode
+ * Change the .p-dark to match the darkMode in tailwind.config.
+ * For example; 
+ *  darkMode: ['selector', '[class*="app-dark"]'] 
+ *  should match;
+ * :root.app-dark
+*/
+:root.dark {
+  --p-primary-color: var(--p-primary-800);
+  --p-primary-contrast-color: var(--p-surface-900);
+  --p-primary-hover-color: var(--p-primary-300);
+  --p-primary-active-color: var(--p-primary-200);
+  --p-content-border-color: var(--p-surface-700);
+  --p-content-hover-background: var(--p-surface-800);
+  --p-content-hover-color: var(--p-surface-0);
+  --p-highlight-background: color-mix(in srgb, var(--p-primary-400), transparent 84%);
+  --p-highlight-color: rgba(255, 255, 255, 0.87);
+  --p-highlight-focus-background: color-mix(in srgb, var(--p-primary-400), transparent 76%);
+  --p-highlight-focus-color: rgba(255, 255, 255, 0.87);
+  --p-text-color: var(--p-surface-0);
+  --p-text-hover-color: var(--p-surface-0);
+  --p-text-muted-color: var(--p-surface-400);
+  --p-text-hover-muted-color: var(--p-surface-300);
+}
