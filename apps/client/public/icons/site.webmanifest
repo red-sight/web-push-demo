@@ -30,6 +30,6 @@
   "start_url": "/",
   "display": "browser",
   "background_color": "#FFFFFF",
-  "theme_color": "#63A862",
+  "theme_color": "#020617",
   "description": "A quick implementation of web push notifications can effectively showcase their ability to deliver real-time updates and enhance user engagement."
 }

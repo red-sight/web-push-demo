@@ -1,25 +1,24 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
 import { SendPushNotificationDto } from './dtos/send-push-notification.dto';
+import { WebPushService } from './web-push/web-push.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly webPushService: WebPushService) {}
 
   @Get('/get_public_vapid_key')
   getPublicKey() {
-    const publicKey = this.appService.getPublicVapidKey();
-    return { publicKey };
+    return { publicKey: this.webPushService.getPublicVapidKey() };
   }
 
   @Get('/generate_vapid_keys')
   generateVapidKeys() {
-    return this.appService.generateVapidKeys();
+    return this.webPushService.generateVapidKeys();
   }
 
   @Post('/send')
   async send(@Body() data: SendPushNotificationDto) {
-    await this.appService.sendPushNotification(data);
+    await this.webPushService.sendPushNotification(data);
     return { message: 'success' };
   }
 }

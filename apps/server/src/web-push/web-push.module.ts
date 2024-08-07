@@ -1,5 +1,6 @@
 import { Module, Global } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
+import { WebPushService } from './web-push.service';
 import * as webPush from 'web-push';
 
 @Global()
@@ -10,17 +11,8 @@ import * as webPush from 'web-push';
       provide: 'WEB_PUSH',
       useValue: webPush,
     },
+    WebPushService,
   ],
-  exports: ['WEB_PUSH'],
+  exports: ['WEB_PUSH', WebPushService],
 })
-export class WebPushModule {
-  constructor(private configService: ConfigService) {
-    const publicKey = this.configService.get<string>('VAPID_PUBLIC_KEY');
-    const privateKey = this.configService.get<string>('VAPID_PRIVATE_KEY');
-    webPush.setVapidDetails(
-      'mailto:malahov.dmitry@gmail.com',
-      publicKey,
-      privateKey,
-    );
-  }
-}
+export class WebPushModule {}

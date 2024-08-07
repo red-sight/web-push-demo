@@ -1,5 +1,5 @@
 {
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.experimental.useFlatConfig": false,
   "eslint.workingDirectories": [
     {
       "pattern": "./nest/*/"
@@ -10,5 +10,6 @@
     {
       "pattern": "./packages/*/"
     }
-  ]
+  ],
+  "scss.lint.unknownAtRules": "ignore"
 }

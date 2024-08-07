@@ -32,5 +32,5 @@ export class PushSubscriptionDto {
   @IsInt()
   @IsPositive()
   @IsOptional()
-  expirationTime: number | null;
+  expirationTime?: number | null;
 }

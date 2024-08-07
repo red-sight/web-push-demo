@@ -6,9 +6,11 @@ export const useWebPushStore = defineStore('web-push', {
   state: (): {
     publicKey: null | string
     subscription: null | PushSubscriptionJSON
+    requestPermissionStatus: null | Boolean
   } => ({
     publicKey: null,
     subscription: null,
+    requestPermissionStatus: null,
   }),
   actions: {
     async init() {
@@ -31,9 +33,11 @@ export const useWebPushStore = defineStore('web-push', {
       const result = await Notification.requestPermission()
       if (result === 'denied') {
         console.error('The user explicitly denied the permission request.')
+        this.requestPermissionStatus = false
         return
       }
       if (result === 'granted') {
+        this.requestPermissionStatus = true
         console.info('The user accepted the permission request.')
       }
       const registration = await navigator.serviceWorker.getRegistration()
