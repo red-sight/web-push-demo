@@ -3,33 +3,24 @@
   "short_name": "web-push-demo",
   "icons": [
     {
-      "src": "/icons/pwa-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/pwa-512x512.png",
+      "purpose": "maskable",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "src": "icons/icon512_maskable.png",
+      "type": "image/png"
     },
     {
-      "src": "/icons/pwa-maskable-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icons/pwa-maskable-512x512.png",
+      "purpose": "any",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "src": "icons/icon512_rounded.png",
+      "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "orientation": "any",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#FFFFFF",
-  "description": "A quick implementation of web push notifications can effectively showcase their ability to deliver real-time updates and enhance user engagement."
+  "dir": "left",
+  "lang": "en-US",
+  "start_url": "/",
+  "scope": "https://web-push-demo.distantcell.space",
+  "description": "A quick implementation of web push notifications can effectively showcase their ability to deliver real-time updates and enhance user engagement.",
+  "id": "https://web-push-demo.distantcell.space"
 }
