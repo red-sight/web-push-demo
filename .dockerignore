@@ -8,3 +8,4 @@ Dockerfile
 .git
 **/dist/
 **/dev-dist/
+!apps/client/.env.*
