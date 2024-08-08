@@ -1,3 +1,4 @@
+import '@/assets/styles/fonts.css'
 import '@/assets/styles/tailwind-base.css'
 import '@/assets/styles/variables.css'
 import '@/assets/styles/index.scss'
@@ -26,19 +27,19 @@ app.use(PrimeVue, {
     directives: {
       ripple: {
         root: {
-          class: ['block absolute bg-surface-0/50 rounded-full pointer-events-none'],
+          class: ['block absolute bg-surface-300 rounded-full pointer-events-none'],
           style: 'transform: scale(0)',
         },
       },
     },
     toolbar: {
-      root: 'flex w-full h-full justify-between px-5 py-10',
+      root: 'flex w-full h-full justify-start pb-10 xs:pt-10 sm:pt-32',
       start: 'h-full flex items-center',
       center: 'h-full flex items-center font-bold text-4xl',
       end: 'h-full flex items-center',
     },
     button: {
-      root: 'py-2 px-5 font-semibold text-lg rounded-full ripple-box bg-primary text-white',
+      root: 'py-2 px-5 font-semibold text-lg ripple-box ',
     },
   },
 })

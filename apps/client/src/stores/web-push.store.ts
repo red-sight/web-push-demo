@@ -16,7 +16,6 @@ export const useWebPushStore = defineStore('web-push', {
     async init() {
       await this.getPublicKey()
       await this.getSubscription()
-      await this.sendNotification()
     },
 
     async getPublicKey() {
@@ -29,7 +28,6 @@ export const useWebPushStore = defineStore('web-push', {
 
     async getSubscription() {
       if (!this.publicKey) return console.error('Public key is not defined')
-
       const result = await Notification.requestPermission()
       if (result === 'denied') {
         console.error('The user explicitly denied the permission request.')
@@ -53,6 +51,7 @@ export const useWebPushStore = defineStore('web-push', {
     },
 
     async sendNotification() {
+      if (!this.requestPermissionStatus) return console.error('Not permitted')
       await api({
         url: '/send',
         method: 'post',
