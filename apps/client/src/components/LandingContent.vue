@@ -16,8 +16,8 @@
   <div class="text-right pb-20 pt-10">
     <AppButton
       :label="state.permissionStatus === null ? 'Start' : 'Try again'"
-      @click="init"
       class="border-4 rounded-md border-color"
+      @click="init"
     />
   </div>
 </template>

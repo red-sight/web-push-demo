@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { throwIfEmpty } from 'rxjs';
 import { SendPushNotificationDto } from 'src/dtos/send-push-notification.dto';
 import * as webPush from 'web-push';
 

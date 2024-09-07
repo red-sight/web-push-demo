@@ -1,9 +1,5 @@
 {
-  "eslint.experimental.useFlatConfig": false,
   "eslint.workingDirectories": [
-    {
-      "pattern": "./nest/*/"
-    },
     {
       "pattern": "./apps/*/"
     },
