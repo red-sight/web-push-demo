@@ -6,6 +6,28 @@ on:
       - main
 
 jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Tests
+        run: yarn test
+
   build:
     runs-on: ubuntu-latest
 
@@ -48,6 +70,10 @@ jobs:
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/web-push-demo:latest
             docker stop web-push-demo || true
             docker rm web-push-demo || true
+            docker ps -a -q -f status=exited | xargs --no-run-if-empty docker rm -v || true
+            docker images -f "dangling=true" -q | xargs --no-run-if-empty docker rmi || true
+            docker images | awk '/ago/  { print $3}' | xargs --no-run-if-empty docker rmi || true
+            docker volume ls -qf dangling=true | xargs --no-run-if-empty docker volume rm || true
             docker run -d \
               --name web-push-demo \
               -p 3000:3000 \

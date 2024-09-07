@@ -1,9 +1,5 @@
 {
-  "eslint.experimental.useFlatConfig": false,
   "eslint.workingDirectories": [
-    {
-      "pattern": "./nest/*/"
-    },
     {
       "pattern": "./apps/*/"
     },
@@ -11,5 +7,6 @@
       "pattern": "./packages/*/"
     }
   ],
+  "eslint.nodePath": ".yarn/releases/yarn-4.2.2.cjs",
   "scss.lint.unknownAtRules": "ignore"
 }

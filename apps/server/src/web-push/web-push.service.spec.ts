@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WebPushService } from './web-push.service';
 import { ConfigService } from '@nestjs/config';
-import { setVapidDetails, VapidKeys } from 'web-push';
+import { VapidKeys } from 'web-push';
 
 describe('WebPushService', () => {
   let service: WebPushService;

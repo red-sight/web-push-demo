@@ -1,15 +1,17 @@
 <template>
   <div class="w-full text-center">
-    <AppButton label="Start" @click="init" />
+    <div v-if="requestPermissionStatus !== true"><landing-content /></div>
+
+    <send-push-notification v-if="requestPermissionStatus" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useWebPushStore } from '@/stores/web-push.store'
+import { useWebPushStore } from "@/stores/web-push.store";
+import { storeToRefs } from "pinia";
+import SendPushNotification from "@/components/SendPushNotification.vue";
+import LandingContent from "@/components/LandingContent.vue";
 
-const webPushStore = useWebPushStore()
-
-async function init() {
-  await webPushStore.init()
-}
+const webPushStore = useWebPushStore();
+const { requestPermissionStatus } = storeToRefs(webPushStore);
 </script>
