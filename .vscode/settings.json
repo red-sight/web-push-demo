@@ -11,5 +11,6 @@
       "pattern": "./packages/*/"
     }
   ],
+  "eslint.nodePath": ".yarn/releases/yarn-4.2.2.cjs",
   "scss.lint.unknownAtRules": "ignore"
 }

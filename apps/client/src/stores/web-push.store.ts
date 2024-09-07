@@ -1,12 +1,13 @@
 import { api } from '@/scripts/api'
 import { urlB64ToUint8Array } from '@/scripts/urlB64ToUint8Array'
+import type { INotification } from '@/types/notitifcation.interface'
 import { defineStore } from 'pinia'
 
 export const useWebPushStore = defineStore('web-push', {
   state: (): {
     publicKey: null | string
     subscription: null | PushSubscriptionJSON
-    requestPermissionStatus: null | Boolean
+    requestPermissionStatus: null | boolean
   } => ({
     publicKey: null,
     subscription: null,
@@ -50,15 +51,15 @@ export const useWebPushStore = defineStore('web-push', {
       this.subscription = subscription.toJSON()
     },
 
-    async sendNotification() {
+    async sendNotification({ title, body }: INotification) {
       if (!this.requestPermissionStatus) return console.error('Not permitted')
       await api({
         url: '/send',
         method: 'post',
         data: {
           notification: {
-            title: 'Hey',
-            body: 'This is sent from the backend',
+            title,
+            body,
           },
           subscription: this.subscription,
         },

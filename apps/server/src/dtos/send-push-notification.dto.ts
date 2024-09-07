@@ -10,7 +10,6 @@ import {
   IsOptional,
   IsString,
   IsUrl,
-  IsUUID,
   Length,
   ValidateNested,
 } from 'class-validator';
