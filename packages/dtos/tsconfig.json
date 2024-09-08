@@ -1,0 +1,17 @@
+{
+  "extends": "@repo/typescript-config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "strictPropertyInitialization": false,
+    "module": "ESNext",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "./eslint.config.mjs",
+    "dist"
+  ]
+}

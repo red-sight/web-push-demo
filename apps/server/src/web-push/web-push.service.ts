@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { SendPushNotificationDto } from 'src/dtos/send-push-notification.dto';
+import { SendPushNotificationDto } from '@repo/dtos';
 import * as webPush from 'web-push';
 
 type WebPushType = typeof webPush;

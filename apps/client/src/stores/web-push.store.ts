@@ -1,6 +1,6 @@
 import { api } from '@/scripts/api'
 import { urlB64ToUint8Array } from '@/scripts/urlB64ToUint8Array'
-import type { INotification } from '@/types/notitifcation.interface'
+import type { PushNotificationDto } from '@repo/dtos'
 import { defineStore } from 'pinia'
 
 export const useWebPushStore = defineStore('web-push', {
@@ -51,16 +51,13 @@ export const useWebPushStore = defineStore('web-push', {
       this.subscription = subscription.toJSON()
     },
 
-    async sendNotification({ title, body }: INotification) {
+    async sendNotification(notification: PushNotificationDto) {
       if (!this.requestPermissionStatus) return console.error('Not permitted')
       await api({
         url: '/send',
         method: 'post',
         data: {
-          notification: {
-            title,
-            body,
-          },
+          notification,
           subscription: this.subscription,
         },
       })

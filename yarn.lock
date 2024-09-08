@@ -2397,6 +2397,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@repo/dtos@workspace:^, @repo/dtos@workspace:packages/dtos":
+  version: 0.0.0-use.local
+  resolution: "@repo/dtos@workspace:packages/dtos"
+  dependencies:
+    "@eslint/js": "npm:^9.10.0"
+    "@repo/typescript-config": "workspace:^"
+    "@types/eslint__js": "npm:^8.42.3"
+    "@types/express": "npm:^4.17.21"
+    class-transformer: "npm:^0.5.1"
+    class-validator: "npm:^0.14.1"
+    eslint: "npm:^9.10.0"
+    nodemon: "npm:^3.1.0"
+    typescript: "npm:^5.5.4"
+    typescript-eslint: "npm:^8.4.0"
+  languageName: unknown
+  linkType: soft
+
 "@repo/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@repo/eslint-config@workspace:packages/eslint-config"
@@ -4780,6 +4797,7 @@ __metadata:
     "@iconify/vue": "npm:^4.1.2"
     "@primevue/auto-import-resolver": "npm:^4.0.4"
     "@primevue/themes": "npm:^4.0.4"
+    "@repo/dtos": "workspace:^"
     "@rushstack/eslint-patch": "npm:^1.8.0"
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/eslint__js": "npm:^8.42.3"
@@ -4790,6 +4808,8 @@ __metadata:
     "@vue/tsconfig": "npm:^0.5.1"
     autoprefixer: "npm:^10.4.20"
     axios: "npm:^1.7.3"
+    class-transformer: "npm:^0.5.1"
+    class-validator: "npm:^0.14.1"
     eslint: "npm:^9.10.0"
     eslint-plugin-vue: "npm:^9.23.0"
     npm-run-all2: "npm:^6.2.0"
@@ -4797,6 +4817,7 @@ __metadata:
     postcss: "npm:^8.4.40"
     prettier: "npm:^3.2.5"
     primevue: "npm:^4.0.4"
+    reflect-metadata: "npm:^0.2.2"
     sass: "npm:^1.77.8"
     tailwindcss: "npm:^3.4.7"
     tailwindcss-primeui: "npm:^0.3.4"
@@ -9595,7 +9616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reflect-metadata@npm:^0.2.0":
+"reflect-metadata@npm:^0.2.0, reflect-metadata@npm:^0.2.2":
   version: 0.2.2
   resolution: "reflect-metadata@npm:0.2.2"
   checksum: 10c0/1cd93a15ea291e420204955544637c264c216e7aac527470e393d54b4bb075f10a17e60d8168ec96600c7e0b9fcc0cb0bb6e91c3fbf5b0d8c9056f04e6ac1ec2
@@ -10035,6 +10056,7 @@ __metadata:
     "@nestjs/platform-express": "npm:^10.0.0"
     "@nestjs/schematics": "npm:^10.0.0"
     "@nestjs/testing": "npm:^10.0.0"
+    "@repo/dtos": "workspace:^"
     "@types/eslint__js": "npm:^8.42.3"
     "@types/express": "npm:^4.17.17"
     "@types/jest": "npm:^29.5.2"

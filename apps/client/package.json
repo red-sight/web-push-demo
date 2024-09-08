@@ -15,9 +15,13 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.4",
+    "@repo/dtos": "workspace:^",
     "axios": "^1.7.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "pinia": "^2.1.7",
     "primevue": "^4.0.4",
+    "reflect-metadata": "^0.2.2",
     "tailwindcss-primeui": "^0.3.4",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
