@@ -3,6 +3,7 @@ import '@/assets/styles/tailwind-base.css'
 import '@/assets/styles/variables.css'
 import '@/assets/styles/index.scss'
 import 'reflect-metadata'
+import RadioButton, { type RadioButtonContext, type RadioButtonProps } from 'primevue/radiobutton'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -16,7 +17,10 @@ import ToastService from 'primevue/toastservice'
 import InputText, { type InputTextContext, type InputTextProps } from 'primevue/inputtext'
 import FloatLabel from 'primevue/floatlabel'
 import Textarea, { type TextareaContext, type TextareaProps } from 'primevue/textarea'
-import Message, { type MessageProps } from 'primevue/message'
+import Accordion from 'primevue/accordion'
+import AccordionPanel from 'primevue/accordionpanel'
+import AccordionHeader from 'primevue/accordionheader'
+import AccordionContent from 'primevue/accordioncontent'
 
 import App from './App.vue'
 import router from './router'
@@ -35,7 +39,7 @@ app.use(PrimeVue, {
     directives: {
       ripple: {
         root: {
-          class: ['block absolute rounded-full pointer-events-none bg-primary'],
+          class: ['block absolute rounded-full pointer-events-none bg-surface-200'],
           style: 'transform: scale(0)',
         },
       },
@@ -315,84 +319,98 @@ app.use(PrimeVue, {
       },
     },
 
-    message: {
-      root: ({ props }: { props: MessageProps }) => ({
+    accordionheader: {
+      root: {
+        class: 'flex w-full justify-between items-center p-2',
+      },
+    },
+
+    accordioncontent: {
+      root: {
+        class: 'pt-5',
+      },
+    },
+
+    radiobutton: {
+      root: {
         class: [
-          // Spacing and Shape
-          'rounded-md',
-          'outline',
-          // Colors
-          {
-            'bg-blue-100/70 dark:bg-blue-500/20': props.severity == 'info',
-            'bg-green-100/70 dark:bg-green-500/20': props.severity == 'success',
-            'bg-surface-100/70 dark:bg-surface-500/20': props.severity == 'secondary',
-            'bg-orange-100/70 dark:bg-orange-500/20': props.severity == 'warn',
-            'bg-red-100/70 dark:bg-red-500/20': props.severity == 'error',
-            'bg-surface-950 dark:bg-surface-0': props.severity == 'contrast',
-          },
-          {
-            'outline-blue-200 dark:outline-blue-500/20': props.severity == 'info',
-            'outline-green-200 dark:outline-green-500/20': props.severity == 'success',
-            'outline-surface-200 dark:outline-surface-500/20': props.severity == 'secondary',
-            'outline-orange-200 dark:outline-orange-500/20': props.severity == 'warn',
-            'outline-red-200 dark:outline-red-500/20': props.severity == 'error',
-            'outline-surface-950 dark:outline-surface-0': props.severity == 'contrast',
-          },
-          {
-            'text-blue-700 dark:text-blue-300': props.severity == 'info',
-            'text-green-700 dark:text-green-300': props.severity == 'success',
-            'text-surface-700 dark:text-surface-300': props.severity == 'secondary',
-            'text-orange-700 dark:text-orange-300': props.severity == 'warn',
-            'text-red-700 dark:text-red-300': props.severity == 'error',
-            'text-surface-0 dark:text-surface-950': props.severity == 'contrast',
-          },
+          'relative',
+          'inline-flex',
+          'align-bottom',
+          'w-5 h-5',
+          'cursor-pointer',
+          'select-none',
         ],
-      }),
-      content: {
-        class: ['flex items-center h-full', 'py-2 px-3 gap-2'],
       },
-      icon: {
-        class: ['shrink-0 w-[1.125rem] h-[1.125rem]'],
-      },
-      text: {
-        class: ['text-base leading-[normal]', 'font-medium'],
-      },
-      closeButton: ({ props }: { props: MessageProps }) => ({
+      box: ({ props, context }: { props: RadioButtonProps; context: RadioButtonContext }) => ({
         class: [
           // Flexbox
-          'flex items-center justify-center',
+          'flex justify-center items-center',
           // Size
-          'w-7 h-7',
-          // Spacing and Misc
-          'ml-auto relative',
+          'w-5 h-5',
           // Shape
+          'border outline-transparent',
           'rounded-full',
-          // Colors
-          'bg-transparent',
-          // Transitions
+          // Transition
           'transition duration-200 ease-in-out',
-          // States
-          'hover:bg-surface-0/30 dark:hover:bg-[rgba(255,255,255,0.03)]',
-          'focus:outline-none focus:outline-offset-0 focus:ring-1',
+          // Colors
           {
-            'focus:ring-blue-500 dark:focus:ring-blue-400': props.severity == 'info',
-            'focus:ring-green-500 dark:focus:ring-green-400': props.severity == 'success',
-            'focus:ring-surface-500 dark:focus:ring-surface-400': props.severity == 'secondary',
-            'focus:ring-orange-500 dark:focus:ring-orange-400': props.severity == 'warn',
-            'focus:ring-red-500 dark:focus:ring-red-4000': props.severity == 'error',
-            'focus:ring-surface-0 dark:focus:ring-surface-950': props.severity == 'contrast',
+            'text-surface-700 dark:text-white/80': context.checked,
+            'border-surface-300 dark:border-surface-700': !context.checked && !props.invalid,
+            'border-primary bg-primary': context.checked && !props.disabled,
           },
-          // Misc
-          'overflow-hidden',
+          // Invalid State
+          { 'border-red-500 dark:border-red-400': props.invalid },
+          // States
+          {
+            'peer-hover:border-surface-400 dark:peer-hover:border-surface-400':
+              !props.disabled && !props.invalid && !context.checked,
+            'peer-hover:border-primary-emphasis': !props.disabled && !context.checked,
+            'peer-hover:[&>*:first-child]:bg-primary-600 dark:peer-hover:[&>*:first-child]:bg-primary-300':
+              !props.disabled && !context.checked,
+            'peer-focus-visible:ring-1 peer-focus-visible:ring-primary-500 dark:peer-focus-visible:ring-primary-400':
+              !props.disabled,
+            'bg-surface-200 [&>*:first-child]:bg-surface-600 dark:bg-surface-700 dark:[&>*:first-child]:bg-surface-400 border-surface-300 dark:border-surface-700 select-none pointer-events-none cursor-default':
+              props.disabled,
+          },
         ],
       }),
-      transition: {
-        enterFromClass: 'opacity-0',
-        enterActiveClass: 'transition-opacity duration-300',
-        leaveFromClass: 'max-h-40',
-        leaveActiveClass: 'overflow-hidden transition-all duration-300 ease-in',
-        leaveToClass: 'max-h-0 opacity-0 !m-0',
+      input: {
+        class: [
+          'peer',
+          'w-full ',
+          'h-full',
+          'absolute',
+          'top-0 left-0',
+          'z-10',
+          'p-0',
+          'm-0',
+          'opacity-0',
+          'rounded-md',
+          'outline-none',
+          'border-1 border-surface-200 dark:border-surface-700',
+          'appearance-none',
+          'cursor-pointer',
+        ],
       },
+      icon: ({ context }: { context: RadioButtonContext }) => ({
+        class: [
+          'block',
+          // Shape
+          'rounded-full',
+          // Size
+          'w-3 h-3',
+          // Conditions
+          {
+            'bg-surface-0 dark:bg-surface-900': context.checked,
+            'bg-primary': !context.checked,
+            'backface-hidden invisible scale-[0.1]': !context.checked,
+            'transform visible translate-z-0 scale-[1,1]': context.checked,
+          },
+          // Transition
+          'transition duration-200',
+        ],
+      }),
     },
   },
 })
@@ -406,6 +424,10 @@ app.component('AppToolbar', Toolbar)
 app.component('InputText', InputText)
 app.component('FloatLabel', FloatLabel)
 app.component('TextArea', Textarea)
-app.component('AppMessage', Message)
+app.component('AppAccordion', Accordion)
+app.component('AppAccordionPanel', AccordionPanel)
+app.component('AppAccordionHeader', AccordionHeader)
+app.component('AppAccordionContent', AccordionContent)
+app.component('RadioButton', RadioButton)
 
 app.mount('#app')

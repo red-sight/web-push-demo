@@ -36,15 +36,15 @@ export class PushNotificationDto {
   body: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   icon?: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   badge?: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   image?: string;
 
   @IsOptional()
