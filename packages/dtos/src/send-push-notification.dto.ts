@@ -32,8 +32,8 @@ export class PushNotificationDto {
   title: string;
 
   @IsNotEmpty()
-  @IsString()
-  body: string;
+  @IsOptional()
+  body?: string;
 
   @IsOptional()
   @IsUrl({ require_tld: false })
