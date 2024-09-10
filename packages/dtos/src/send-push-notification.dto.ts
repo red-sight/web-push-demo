@@ -1,4 +1,4 @@
-import { Type } from 'class-transformer';
+import { Type } from "class-transformer";
 import {
   ArrayNotEmpty,
   IsArray,
@@ -11,9 +11,9 @@ import {
   IsString,
   IsUrl,
   Length,
-  ValidateNested,
-} from 'class-validator';
-import { PushSubscriptionDto } from './subscription.dto';
+  ValidateNested
+} from "class-validator";
+import { PushSubscriptionDto } from "./subscription.dto";
 
 class PushNotificationActionDto {
   @IsString()
@@ -26,25 +26,25 @@ class PushNotificationActionDto {
   icon: string;
 }
 
-class PushNotificationDto {
+export class PushNotificationDto {
   @IsNotEmpty()
   @IsString()
   title: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  body?: string;
+  body: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   icon?: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   badge?: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   image?: string;
 
   @IsOptional()
@@ -57,7 +57,7 @@ class PushNotificationDto {
   data?: any;
 
   @IsOptional()
-  @IsEnum(['auto', 'ltr', 'rtl'])
+  @IsEnum(["auto", "ltr", "rtl"])
   dir?: string;
 
   @IsOptional()

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { SendPushNotificationDto } from './dtos/send-push-notification.dto';
+import { SendPushNotificationDto } from '@repo/dtos';
 import { WebPushService } from './web-push/web-push.service';
 
 @Controller()
