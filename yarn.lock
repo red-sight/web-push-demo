@@ -2999,6 +2999,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/serviceworker@npm:^0.0.95":
+  version: 0.0.95
+  resolution: "@types/serviceworker@npm:0.0.95"
+  checksum: 10c0/3087c894e7e55bcc30f9e06702a3a17f39fcd0c1db456937e8c2335e514859860680c854f3ac7f2e77472634afc4aefb7b7037d3328e6ec4fca9276dad090ee1
+  languageName: node
+  linkType: hard
+
 "@types/stack-utils@npm:^2.0.0":
   version: 2.0.3
   resolution: "@types/stack-utils@npm:2.0.3"
@@ -4802,6 +4809,7 @@ __metadata:
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/eslint__js": "npm:^8.42.3"
     "@types/node": "npm:^22.1.0"
+    "@types/serviceworker": "npm:^0.0.95"
     "@vitejs/plugin-vue": "npm:^5.0.5"
     "@vue/eslint-config-prettier": "npm:^9.0.0"
     "@vue/eslint-config-typescript": "npm:^13.0.0"
