@@ -73,6 +73,55 @@
               </div>
             </div>
           </div>
+
+          <div class="flex flex-col items-start pt-5">
+            <label class="app-input-block__label py-5"
+              >Add an image
+              <AppButton
+                v-show="state.form.image"
+                label="Clear"
+                size="small"
+                @click="state.form.image = undefined"
+            /></label>
+            <div class="flex flex-wrap gap-4 justify-between">
+              <div v-for="image in images" :key="image" class="flex items-center">
+                <RadioButton
+                  v-model="state.form.image"
+                  :input-id="image"
+                  name="image"
+                  :value="image"
+                />
+                <label :for="image" class="ml-2">
+                  <img :src="image" alt="" class="w-32" />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start py-8">
+            <app-checkbox
+              v-model="state.actions"
+              input-id="actions-checkbox"
+              name="actions-checkbox"
+              binary
+              @change="onActionsChange"
+            />
+            <label for="actions-checkbox" class="ml-2"> Enable actions </label>
+          </div>
+
+          <input-validation
+            :errors="state.errors"
+            property="vibrate"
+            label="Vibrate"
+            class="xs:col-span-full py-8"
+          >
+            <AppSelect
+              v-model="state.form.vibrate"
+              :options="vibrations"
+              option-label="label"
+              option-value="value"
+            />
+          </input-validation>
         </app-accordion-content>
       </app-accordion-panel>
     </app-accordion>
@@ -96,11 +145,13 @@ const state: {
   errors: ValidationError[];
   dirty: boolean;
   value: string;
+  actions: boolean;
 } = reactive({
   form: new PushNotificationDto(),
   errors: [],
   dirty: false,
   value: "",
+  actions: false,
 });
 
 async function onClick() {
@@ -120,15 +171,58 @@ const icons = [
   "unjs--ungh.svg",
   "unjs--uncrypto.svg",
   "unjs--cookie-es.svg",
-].map(
-  (filename) =>
-    new URL(`form-options/icons/${filename}`, import.meta.env.VITE_WEBSITE_URL).href
+].map((filename) => getPublicUrl(`form-options/icons/${filename}`));
+
+const badges = ["1.svg", "2.svg", "3.svg", "4.svg"].map((filename) =>
+  getPublicUrl(`form-options/badges/${filename}`)
 );
 
-const badges = ["1.svg", "2.svg", "3.svg", "4.svg"].map(
-  (filename) =>
-    new URL(`form-options/badges/${filename}`, import.meta.env.VITE_WEBSITE_URL).href
+const images = ["1.png", "2.png", "3.png"].map((filename) =>
+  getPublicUrl(`form-options/images/${filename}`)
 );
+
+const actions = [
+  {
+    action: "dismiss",
+    title: "Dismiss",
+    icon: getPublicUrl("form-options/icons/material-symbols--cancel-rounded.svg"),
+  },
+  {
+    action: "confirm",
+    title: "Confirm",
+    icon: getPublicUrl("form-options/icons/lets-icons--check-ring-duotone.svg"),
+  },
+];
+
+const vibrations = [
+  {
+    label: "Heartbeat",
+    value: [100, 200, 100, 400],
+  },
+
+  {
+    label: "Double trouble",
+    value: [200, 100, 200, 400, 200],
+  },
+
+  {
+    label: "Drumroll",
+    value: [50, 50, 50, 50, 50, 50, 50, 50, 300],
+  },
+
+  {
+    label: "Echo",
+    value: [300, 100, 200, 100, 100],
+  },
+];
+
+function getPublicUrl(path: string) {
+  return new URL(path, import.meta.env.VITE_WEBSITE_URL).href;
+}
+
+function onActionsChange() {
+  state.form.actions = state.actions ? actions : undefined;
+}
 
 onMounted(() => {
   state.form.title = "Heeeey!";
